@@ -1,0 +1,27 @@
+@charset 'UTF-8';
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding-left: 0;
+}
+
+#base_h1 {
+    text-align: center;
+    margin: 30px;
+    background-color: #ff8040;
+}
+
+#score_navi {
+    width: 15%;
+    border-right: solid 1px #000;
+    height: auto;
+    margin-right: 0px;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+}
