@@ -7,10 +7,11 @@
 </head>
 <body>
     <h1 id="base_h1">得点管理システム</h1>
+    <p><a href="Logout.action">ログアウト</a></p>
     <nav id="score_navi">
         <ul>
         <li><a href="menu.jsp">メニュー</a></li>
-        <li><a href="student_list.jsp">学生管理</a></li>
+        <li><a href="StudentList.action">学生管理</a></li>
         <li>成績管理
             <ul>
                 <li><a href="test_regist.jsp">成績登録</a></li>
