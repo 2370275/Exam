@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassNumDao extends DAO{
+public class ClassNumDao extends DAO {
 	/**
 	 * filterメソッド 学校を指定してクラス番号の一覧を取得する
 	 *
@@ -62,3 +62,4 @@ public class ClassNumDao extends DAO{
 	}
 
 }
+
