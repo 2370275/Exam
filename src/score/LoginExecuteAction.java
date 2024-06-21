@@ -13,7 +13,7 @@ public class LoginExecuteAction extends Action{
 		)throws Exception{
 
 		HttpSession session=request.getSession();
-
+		System.out.println("LoginExecuteAction");
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
 		TeacherDao dao=new TeacherDao();
