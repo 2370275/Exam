@@ -28,5 +28,9 @@ public class ClassNumDao extends DAO{
 		return list;
 	}
 
+<<<<<<< HEAD
 	public List
+=======
+	public List;
+>>>>>>> branch 'master' of https://github.com/2370275/Exam.git
 }
