@@ -14,10 +14,8 @@ public class LogoutAction extends Action {
 
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("teacher")!=null) {
-			session.removeAttribute("teacher");
-		}
-		session.setAttribute("isLoggedIn", false);
+		session.invalidate();
+
 		response.sendRedirect("logout.jsp");
     }
 }
