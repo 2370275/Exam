@@ -13,11 +13,12 @@ public class LoginExecuteAction extends Action{
 		)throws Exception{
 
 		HttpSession session=request.getSession();
-		System.out.println("LoginExecuteAction");
+		session.setAttribute("isLoggedIn", true);
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
 		TeacherDao dao=new TeacherDao();
 		Teacher teacher=dao.login(id, password);
+		System.out.println("LoginExecuteAction1");
 		if(teacher!=null){
 			session.setAttribute("teacher", teacher);
 			response.sendRedirect("menu.jsp");

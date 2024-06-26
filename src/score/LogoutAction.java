@@ -17,6 +17,7 @@ public class LogoutAction extends Action {
 		if (session.getAttribute("teacher")!=null) {
 			session.removeAttribute("teacher");
 		}
+		session.setAttribute("isLoggedIn", false);
 		response.sendRedirect("logout.jsp");
     }
 }
