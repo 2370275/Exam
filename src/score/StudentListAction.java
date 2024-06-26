@@ -16,65 +16,66 @@ import dao.ClassNumDao;
 import dao.StudentDao;
 import tool.Action;
 
-public class StudentListAction extends Action  {
-	public void execute(HttpServletRequest request, HttpServletResponse response)throws Exception{
-		HttpSession session = request.getSession();
-		Teacher teacher = (Teacher)session.getAttribute("user");
+public class StudentListAction extends Action {
 
-		String entYearStr="";
-		String classNum="";
-		String isAttendStr="";
-		int entYear = 0;
-		boolean isAttend = false;
-		List<Student> students = null;
-		LocalDate todaysDate = LocalDate.now();
-		int year = todaysDate.getYear();
-		StudentDao sDao = new StudentDao();
-		ClassNumDao cNumDao = new ClassNumDao();
-		Map<String, String> errors = new HashMap<>();
+    @Override
+    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        HttpSession session = req.getSession();
+        Teacher teacher = (Teacher) session.getAttribute("teacher");
 
-		entYearStr = request.getParameter("f1");
-		classNum = request.getParameter("f2");
-		isAttendStr = request.getParameter("f3");
-		System.out.println("ここまで来てる０？");
-		List<String> list = cNumDao.filter(teacher.getSchool());
-		System.out.println("ここまできてる４？");
-		if(entYear !=0 && !classNum.equals("0")){
-			students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
-		}
-		else if(entYear !=0 && classNum.equals("0")){
-			students = sDao.filter(teacher.getSchool(), entYear, isAttend);
-		}
-		else if(entYear == 0 && classNum == null || entYear == 0 && classNum.equals("0") ){
-			students = sDao.filter(teacher.getSchool(), isAttend);
-		}
-		else {
-			errors.put("f1", "クラスを指定する場合は入学年度も指定ください");
-			request.setAttribute("errors", errors);
-			students = sDao.filter(teacher.getSchool(), isAttend);
-		}
-		System.out.println("ここまで来てる２？");
-		if(entYearStr !=null){
-			entYear = Integer.parseInt(entYearStr);
-		}
-		List<Integer>entYearSet = new ArrayList<>();
-		for (int i = year - 10; i < year + 1; i++){
-		}
-		//レスポンス値
-		request.setAttribute("f1", entYear);
-		request.setAttribute("f2", classNum);
-		if(isAttendStr !=null) {
-			isAttend = true;
-			request.setAttribute("f3", isAttendStr);
-		}
-		request.setAttribute("students", students);
-		request.setAttribute("class_num_set", list);
-		request.setAttribute("ent_year_set", entYearSet);
+        if (teacher == null) {
+            throw new Exception("User not found in session");
+        }
 
-		System.out.println("ここまで来てる？");
+        if (teacher.getSchool() == null) {
+            throw new Exception("Teacher's school information is missing");
+        }
 
-		//JSPへフォワード
-		request.getRequestDispatcher("student_list.jsp").forward(request, response);
+        String entYearStr = req.getParameter("f1");
+        String classNum = req.getParameter("f2");
+        String isAttendStr = req.getParameter("f3");
 
-	}
+        int entYear = (entYearStr != null && !entYearStr.isEmpty()) ? Integer.parseInt(entYearStr) : 0;
+        boolean isAttend = isAttendStr != null;
+
+        StudentDao sDao = new StudentDao();
+        ClassNumDao cNumDao = new ClassNumDao();
+        Map<String, String> errors = new HashMap<>();
+
+        List<String> list = cNumDao.filter(teacher.getSchool());
+        if (list == null) {
+            throw new Exception("Class numbers not found for school: " + teacher.getSchool().getCd());
+        }
+
+        List<Student> students;
+
+        if (entYear != 0 && classNum != null && !classNum.equals("0")) {
+            students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
+        } else if (entYear != 0) {
+            students = sDao.filter(teacher.getSchool(), entYear, isAttend);
+        } else {
+            students = sDao.filter(teacher.getSchool(), isAttend);
+        }
+
+        if (students == null) {
+            throw new Exception("No students found for the given criteria");
+        }
+
+        LocalDate todaysDate = LocalDate.now();
+        int year = todaysDate.getYear();
+
+        List<Integer> entYearSet = new ArrayList<>();
+        for (int i = year - 10; i <= year; i++) {
+            entYearSet.add(i);
+        }
+
+        req.setAttribute("f1", entYear);
+        req.setAttribute("f2", classNum);
+        req.setAttribute("f3", isAttendStr);
+        req.setAttribute("students", students);
+        req.setAttribute("class_num_set", list);
+        req.setAttribute("ent_year_set", entYearSet);
+
+        req.getRequestDispatcher("student_list.jsp").forward(req, res);
+    }
 }
