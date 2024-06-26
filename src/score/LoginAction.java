@@ -8,6 +8,6 @@ import tool.Action;
 public class LoginAction extends Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response
 		)throws Exception{
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("menu.jsp");
 	}
 }
