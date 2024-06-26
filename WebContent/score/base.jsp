@@ -12,7 +12,6 @@
     <c:choose>
         <c:when test="${empty sessionScope.isLoggedIn}">
             <!-- ログインしていない場合の処理 -->
-            <p><a href="Login.jsp">ログイン</a></p>
         </c:when>
         <c:otherwise>
             <!-- ログインしている場合の処理 -->
