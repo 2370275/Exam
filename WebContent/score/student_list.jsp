@@ -2,6 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="base.jsp" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class ="main">
+<%@ include file="side.jsp" %>
+<div class ="main_content">
 
 <h2 class="mt-4">学生管理</h2>
 <div class="mb-3">
@@ -80,3 +83,6 @@
         <div>学生情報が存在しませんでした。</div>
     </c:otherwise>
 </c:choose>
+
+</div>
+</div>

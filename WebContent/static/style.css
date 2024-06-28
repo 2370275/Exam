@@ -11,14 +11,21 @@ li {
 #base_h1 {
     text-align: center;
     margin: 30px;
-    background-color: #408080;
+    background-color: #80ffff;
 }
 
 #score_navi {
     width: 15%;
     border-right: solid 1px #000;
     height: auto;
-    margin-right: 1px;
+}
+
+.main {
+    display: flex;
+}
+.main_content{
+	margin-left:50px;
+	margin-right: 0px;
 }
 
 footer {
