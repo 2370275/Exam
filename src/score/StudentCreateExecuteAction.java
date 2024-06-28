@@ -19,7 +19,7 @@ public class StudentCreateExecuteAction extends Action {
             String classNum = req.getParameter("class_num");
 
             HttpSession session = req.getSession();
-            Teacher teacher = (Teacher) session.getAttribute("user");
+            Teacher teacher = (Teacher) session.getAttribute("teacher");
 
             if (teacher == null) {
                 throw new Exception("User not found in session");
