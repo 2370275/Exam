@@ -1,15 +1,26 @@
 package bean;
 
-public class Subject {
-    private int cd;
-    private String name;
-    private String school_cd;
+public class Subject implements java.io.Serializable {
+    private static final long serialVersionUID = 1L;
 
-    public int getCd() {
+    private String schoolCd;
+    private String cd;
+    private String name;
+
+
+    public String getSchoolCd() {
+        return schoolCd;
+    }
+
+    public void setSchoolCd(String schoolCd) {
+        this.schoolCd = schoolCd;
+    }
+
+    public String getCd() {
         return cd;
     }
 
-    public void setCd(int cd) {
+    public void setCd(String cd) {
         this.cd = cd;
     }
 
@@ -19,13 +30,5 @@ public class Subject {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSchool_cd() {
-        return school_cd;
-    }
-
-    public void setSchool_cd(String school_cd) {
-        this.school_cd = school_cd;
     }
 }
