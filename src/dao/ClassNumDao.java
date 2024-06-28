@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.School;
+
 public class ClassNumDao extends DAO {
 	/**
 	 * filterメソッド 学校を指定してクラス番号の一覧を取得する
@@ -15,7 +17,7 @@ public class ClassNumDao extends DAO {
 	 * @return クラス番号の一覧:List<String>
 	 * @throws Exception
 	 */
-	public List<String> filter(String school) throws Exception {
+	public List<String> filter(School school) throws Exception {
 		// リストを初期化
 		List<String> list = new ArrayList<>();
 		// データベースへのコネクションを確立
@@ -28,7 +30,7 @@ public class ClassNumDao extends DAO {
 			statement = connection
 					.prepareStatement("select class_num from class_num where school_cd=? order by class_num");
 			// プリペアードステートメントに学校コードをバインド
-			statement.setString(1, school);
+			statement.setString(1, school.getCd());
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 
@@ -62,4 +64,3 @@ public class ClassNumDao extends DAO {
 	}
 
 }
-
