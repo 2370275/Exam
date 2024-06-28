@@ -17,34 +17,33 @@ import javax.sql.DataSource;
 
 import bean.Subject;
 
-@WebServlet(urlPatterns = {"/score/Subject44"})
+@WebServlet(urlPatterns={"/score/Subject44"})
 public class SubjectCreateAction extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Subject> subjectList = new ArrayList<>();
 
         try {
             InitialContext ic = new InitialContext();
             DataSource ds = (DataSource) ic.lookup("java:/comp/env/jdbc/JSE");
-            try (Connection con = ds.getConnection();
-                 PreparedStatement st = con.prepareStatement("SELECT * FROM SUBJECT");
-                 ResultSet rs = st.executeQuery()) {
+            Connection con = ds.getConnection();
+            PreparedStatement st = con.prepareStatement("SELECT * FROM SUBJECT");
+            ResultSet rs = st.executeQuery();
 
-                while (rs.next()) {
-                    Subject subject = new Subject();
-                    subject.setCd(rs.getInt("cd"));
-                    subject.setName(rs.getString("name"));
-                    subject.setSchool_cd(rs.getString("school_cd"));
-                    subjectList.add(subject);
-                }
+            while (rs.next()) {
+                Subject subject = new Subject();
+                subject.setSubjectId(rs.getInt("student_id"));
+                subject.setSubjectName(rs.getString("student_name"));
+                subjectList.add(subject);
             }
+            st.close();
+            con.close();
         } catch (Exception e) {
             throw new ServletException(e);
         }
 
-        request.setAttribute("subjectList", subjectList);
-        request.getRequestDispatcher("subject_create_done.jsp").forward(request, response);
+        request.setAttribute("studentList", subjectList);
+        request.getRequestDispatcher("subject_create_done.jsp")
+        	.forward(request, response);
     }
 }
