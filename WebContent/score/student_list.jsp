@@ -10,17 +10,21 @@
 <form method="get" class="mb-4">
     <div class="form-row">
         <div class="form-group col-md-3">
-            <label for="student_list_year">入学年度</label>
-            <select name="f1" id="student_list_year" class="form-control">
-                <option value="0">----------</option>
-                <!-- 年度の選択肢をここに追加 -->
-            </select>
-        </div>
+			<label for="student_list_year">入学年度</label>
+			<select name="f1" id="student_list_year" class="form-control">
+				<option value="0">----------</option>
+				<c:forEach var="entYear" items="${entYearSet}">
+					<option value="${entYear}" <c:if test="${entYear == f1}">selected</c:if>>${entYear}</option>
+				</c:forEach>
+			</select>
+		</div>
         <div class="form-group col-md-3">
             <label for="student_list_class">クラス</label>
             <select name="f2" id="student_list_class" class="form-control">
                 <option value="0">----------</option>
-                <!-- クラスの選択肢をここに追加 -->
+                <c:forEach var="classNum" items="${class_num_set}">
+            		<option value="${classNum}" <c:if test="${classNum == f2}">selected</c:if>>${classNum}</option>
+        		</c:forEach>
             </select>
         </div>
         <div class="form-group col-md-3">
