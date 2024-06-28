@@ -34,8 +34,9 @@ public class SubjectCreateAction extends HttpServlet {
 
                 while (rs.next()) {
                     Subject subject = new Subject();
-                    subject.setCd(rs.getInt("cd"));
-                    subject.setName(rs.getString("name"));
+                    subject.setCd(rs.getInt("CD"));
+                    subject.setName(rs.getString("NAME"));
+                    subject.setSchool_cd(rs.getString("SCHOOL_CD"));
                     subjectList.add(subject);
                 }
             }
