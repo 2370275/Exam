@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:import url="/common/base.jsp">
+<c:import url="/score/base.jsp">
     <c:param name="title">
         得点管理システム
     </c:param>
@@ -16,7 +16,7 @@
 </div>
 
  <div style="margin-top: 7em;"></div>
-<a href="student.jsp">学生一覧</a>
-
+<a href="student_update.jsp" style="margin-right: 60px;">戻る</a>
+<a href="StudentList.action">学生一覧</a>
 </c:param>
 </c:import>

@@ -34,6 +34,7 @@
         <label class="form-check-label" for="student_isAttend">在学中</label>
     </div>
     <button type="submit" class="btn btn-primary">登録</button>
+    <a href="StudentCreate.action" style="margin-right: 60px;">戻る</a>
 </form>
 <c:if test="${not empty error}">
     <div class="alert alert-danger mt-3">${error}</div>

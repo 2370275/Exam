@@ -1,30 +1,39 @@
 package score;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Student;
+import bean.Teacher;
+import dao.ClassNumDao;
 import dao.StudentDao;
 import tool.Action;
 
 public class StudentUpdateAction extends Action {
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        String studentId = request.getParameter("student_id");
+    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        HttpSession session = req.getSession();
+        Teacher teacher = (Teacher) session.getAttribute("teacher");
 
+        if (teacher == null) {
+            throw new Exception("User not found in session");
+        }
+
+        String studentId = req.getParameter("no");
         StudentDao studentDao = new StudentDao();
-//        Student student = studentDao.find(studentId);
-//
-//        if (student == null) {
-//            return "error.jsp";
-//        }
-//
-//        List<ClassNum> classes = studentDao.getClasses();
+        Student student = studentDao.get(studentId);
 
-//        request.setAttribute("student", student);
-//        request.setAttribute("classes", classes);
-//        return "student_update.jsp";
+        if (student == null) {
+            throw new Exception("Student not found with ID: " + studentId);
+        }
 
-        return;
+        ClassNumDao classNumDao = new ClassNumDao();
+        List<String> classList = classNumDao.filter(teacher.getSchool());
+
+        req.setAttribute("student", student);
+        req.setAttribute("class_num_set", classList);
+        req.getRequestDispatcher("student_update.jsp").forward(req, res);
     }
 }
