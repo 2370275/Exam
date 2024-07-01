@@ -8,11 +8,15 @@
     <input type="hidden" name="no" value="${student.no}">
     <div class="form-group">
         <label for="student_entYear">入学年度</label>
-        <input type="number" class="form-control" id="student_entYear" name="ent_year" value="${student.entYear}" required>
+        <input type="number" class="form-control" id="student_entYear" name="ent_year" value="${student.entYear}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="student_no">学生番号</label>
+        <input type="text" class="form-control" id="student_no" name="student_number" value="${student.no}" readonly>
     </div>
     <div class="form-group">
         <label for="student_name">氏名</label>
-        <input type="text" class="form-control" id="student_name" name="name" value="${student.name}" required>
+        <input type="text" class="form-control" id="student_name" name="name" value="${student.name}" placeholder="氏名を入力してください" required>
     </div>
     <div class="form-group">
         <label for="student_classNum">クラス</label>
@@ -23,9 +27,10 @@
         </select>
     </div>
     <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="student_isAttend" name="is_attend" <c:if test="${student.attend}">checked</c:if>>
         <label class="form-check-label" for="student_isAttend">在学中</label>
+        <input type="checkbox" class="form-check-input" id="student_isAttend" name="is_attend" <c:if test="${student.attend}">checked</c:if>>
     </div>
     <button type="submit" class="btn btn-primary">変更</button>
-    <a href="StudentList.action" style="margin-right: 60px;">戻る</a>
+    <br><br>
+    <a href="StudentList.action">戻る</a>
 </form>
