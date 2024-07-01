@@ -1,12 +1,8 @@
 <%@page contentType="text/html; charset=UTF-8" %>
-<link rel="stylesheet" href="../static/style.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<%@include file="base.jsp" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class ="main">
-<%@include file="side.jsp" %>
-<div class ="main_content">
-
+<c:import url="base.jsp">
+	<c:param name="content">
 		<h2 id="login_h2">ログイン</h2>
 		<form action="LoginExecute.action" method="post">
 		<p><input type="text" name="id" size="20" placeholder="半角でご入力ください" style="ime-mode: disabled"></p>
@@ -15,7 +11,5 @@
 		<label for="chk_d_ps">パスワードを表示</label>
 		<p><input type="submit" name="login" value="ログイン"></p>
 		</form>
-</div>
-</div>
-
-<%@include file="footer.jsp" %>
+	</c:param>
+</c:import>

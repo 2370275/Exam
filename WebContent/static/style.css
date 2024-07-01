@@ -11,7 +11,7 @@ li {
 #base_h1 {
     text-align: center;
     margin: 30px;
-    background-color: #80ffff;
+    background-color: #80ff80;
 }
 
 #score_navi {
@@ -20,7 +20,7 @@ li {
     height: auto;
 }
 
-.main {
+#base_main {
     display: flex;
 }
 .main_content{
