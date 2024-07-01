@@ -69,7 +69,7 @@ public class StudentListAction extends Action {
             entYearSet.add(i);
         }
 
-        req.setAttribute("f1", entYear);
+        req.setAttribute("f1", entYearStr);
         req.setAttribute("f2", classNum);
         req.setAttribute("f3", isAttendStr);
         req.setAttribute("students", students);
