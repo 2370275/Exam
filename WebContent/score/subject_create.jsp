@@ -17,7 +17,7 @@
 			<div class="form-group">
     			<input type="submit" onclick="location.href='	subject_create_done.jsp';" value="登録">
 			</div>
-			<a href="subject_list.jsp">戻る</a>
+			<a href="SubjectCreateAction">戻る</a>
 		</form>
     </c:param>
 </c:import>
