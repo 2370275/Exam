@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 
 import bean.Subject;
 
-@WebServlet(urlPatterns={"/score/Subject44"})
+@WebServlet(urlPatterns={"/score/SubjectCreateAction"})
 public class SubjectCreateAction extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,8 +32,8 @@ public class SubjectCreateAction extends HttpServlet {
 
             while (rs.next()) {
                 Subject subject = new Subject();
-                subject.setSubjectId(rs.getInt("student_id"));
-                subject.setSubjectName(rs.getString("student_name"));
+                subject.setCd(rs.getString("cd"));
+                subject.setName(rs.getString("name"));
                 subjectList.add(subject);
             }
             st.close();
@@ -42,9 +42,8 @@ public class SubjectCreateAction extends HttpServlet {
             throw new ServletException(e);
         }
 
-        request.setAttribute("studentList", subjectList);
+        request.setAttribute("subjectList", subjectList);
         request.getRequestDispatcher("subject_create_done.jsp")
         	.forward(request, response);
     }
 }
-// aa
