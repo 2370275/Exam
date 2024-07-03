@@ -3,17 +3,17 @@ package bean;
 public class Subject implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String schoolCd;
+    private School school;
     private String cd;
     private String name;
 
 
-    public String getSchoolCd() {
-        return schoolCd;
+    public School getSchool() {
+        return school;
     }
 
-    public void setSchoolCd(String schoolCd) {
-        this.schoolCd = schoolCd;
+    public void setSchool(School school) {
+        this.school = school;
     }
 
     public String getCd() {
