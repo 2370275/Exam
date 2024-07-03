@@ -1,26 +1,21 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="base.jsp">
-    <c:param name="content">
-		<h2 id="subject_create_h2">科目情報登録</h2>
-		<form action = "/SubjectCreateAction">
-				<div class = "form-group">
-					<label for="form-group">科目コード</label><br>
-					<input type="text" size = "30" placeholder="科目コードを入力して下さい。">
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="base.jsp" %>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-				<div id="insert_name">
-					<label class="form-lavel">科目名</label><br>
-					<input type="text" size = "30" placeholder="科目名を入力して下さい">
-				</div>
-			</div>
-			<br>
-			<div class="form-group">
-    			<input type="submit" onclick="location.href='	subject_create_done.jsp';" value="登録">
-			</div>
-			<a href="SubjectCreateAction">戻る</a>
-		</form>
-    </c:param>
-</c:import>
-
-
-
+<h2 class="mt-4">科目新規登録</h2>
+<form action="SubjectCreateExecute.action" method="post">
+    <div class="form-group">
+        <label for="subject_cd">科目コード</label>
+        <input type="text" class="form-control" id="subject_cd" name="subject_cd" required>
+    </div>
+    <div class="form-group">
+        <label for="subject_name">科目名</label>
+        <input type="text" class="form-control" id="subject_name" name="subject_name" required>
+    </div>
+    <button type="submit" class="btn btn-primary">登録</button>
+    <a href="SubjectList.action" class="btn btn-secondary">戻る</a>
+</form>
+<c:if test="${not empty error}">
+    <div class="alert alert-danger mt-3">${error}</div>
+</c:if>

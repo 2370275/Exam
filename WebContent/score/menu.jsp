@@ -15,7 +15,7 @@
 			<a href="test_list.jsp">成績参照</a><br>
 		</div>
 		<div id="subject_menu">
-			<a href="subject_list.jsp">科目管理</a>
+			<a href="SubjectList.action">科目管理</a>
 		</div>
 	</c:param>
 </c:import>
