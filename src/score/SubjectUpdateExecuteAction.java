@@ -10,7 +10,7 @@ import bean.Teacher;
 import dao.SubjectDao;
 import tool.Action;
 
-public class SubjectUpdateAction extends Action {
+public class SubjectUpdateExecuteAction extends Action {
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
         try {
             HttpSession session = req.getSession();
@@ -23,6 +23,7 @@ public class SubjectUpdateAction extends Action {
             }
 
             String cd = req.getParameter("cd");
+            String name = req.getParameter("name");
             School school = teacher.getSchool();
 
             SubjectDao subjectDao = new SubjectDao();
@@ -32,11 +33,17 @@ public class SubjectUpdateAction extends Action {
                 req.setAttribute("error", "科目が存在していません");
                 req.getRequestDispatcher("/score/subject_update.jsp").forward(req, res);
                 return;
-            } else {
-                req.setAttribute("subject", subject);
             }
 
-            req.getRequestDispatcher("/score/subject_update.jsp").forward(req, res);
+            subject.setName(name);
+            boolean result = subjectDao.save(subject);
+
+            if (result) {
+                req.getRequestDispatcher("/score/subject_update_done.jsp").forward(req, res);
+            } else {
+                req.setAttribute("error", "科目の更新に失敗しました");
+                req.getRequestDispatcher("/score/subject_update.jsp").forward(req, res);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             req.setAttribute("error", "エラーが発生しました: " + e.getMessage());

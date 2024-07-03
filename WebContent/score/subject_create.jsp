@@ -7,11 +7,11 @@
 <form action="SubjectCreateExecute.action" method="post">
     <div class="form-group">
         <label for="subject_cd">科目コード</label>
-        <input type="text" class="form-control" id="subject_cd" name="subject_cd" required>
+        <input type="text" class="form-control" id="subject_cd" name="subject_cd" placeholder="科目コードを入力してください" required>
     </div>
     <div class="form-group">
         <label for="subject_name">科目名</label>
-        <input type="text" class="form-control" id="subject_name" name="subject_name" required>
+        <input type="text" class="form-control" id="subject_name" name="subject_name" placeholder="科目名を入力してください" required>
     </div>
     <button type="submit" class="btn btn-primary">登録</button>
     <a href="SubjectList.action" class="btn btn-secondary">戻る</a>

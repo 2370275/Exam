@@ -3,27 +3,42 @@ package score;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import bean.Subject;
 import bean.Teacher;
+import dao.SubjectDao;
 
 public class Util {
-    public static Teacher getUser(HttpServletRequest req) {
-        return (Teacher) req.getSession().getAttribute("teacher");
+
+    public static Teacher getUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        return (Teacher) session.getAttribute("teacher");
     }
 
-    public static void setClassNumSet(HttpServletRequest request, List<String> classNumSet) {
-        request.setAttribute("class_num_set", classNumSet);
+    public static void setClassNumSet(HttpServletRequest request) throws Exception {
+        Teacher teacher = getUser(request);
+        if (teacher != null) {
+            SubjectDao subjectDao = new SubjectDao();
+            List<Subject> subjects = subjectDao.filter(teacher.getSchool());
+            request.setAttribute("subjects", subjects);
+        }
     }
 
-    public static void setEntYearSet(HttpServletRequest request, List<Integer> entYearSet) {
-        request.setAttribute("ent_year_set", entYearSet);
+    public static void setEntYearSet(HttpServletRequest request) {
+        // 実装内容
     }
 
-    public static void setSubjects(HttpServletRequest request, List<String> subjects) {
-        request.setAttribute("subjects", subjects);
+    public static void setSubjects(HttpServletRequest request) throws Exception {
+        Teacher teacher = getUser(request);
+        if (teacher != null) {
+            SubjectDao subjectDao = new SubjectDao();
+            List<Subject> subjects = subjectDao.filter(teacher.getSchool());
+            request.setAttribute("subjects", subjects);
+        }
     }
 
-    public static void setNumSet(HttpServletRequest request, List<Integer> numSet) {
-        request.setAttribute("num_set", numSet);
+    public static void setNumSet(HttpServletRequest request) {
+        // 実装内容
     }
 }
