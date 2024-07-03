@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package score;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,3 +21,6 @@ public class SubjectListAction extends Action {
         }
     }
 }
+=======
+d
+>>>>>>> branch 'master' of https://github.com/2370275/Exam.git
