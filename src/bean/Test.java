@@ -14,7 +14,7 @@ public class Test {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	public String getClassnum() {
+	public String getClassNum() {
 		return classNum;
 	}
 	public void setClassNum(String classNum) {
