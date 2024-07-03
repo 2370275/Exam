@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <c:import url="base.jsp">
-	<c:param name="content">
+    <c:param name="content">
 		<h2 id="menu_h2">メニュー</h2>
 		<div id="student_menu">
 			<a href="StudentList.action">学生管理</a>

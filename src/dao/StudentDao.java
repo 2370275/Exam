@@ -54,6 +54,39 @@ public class StudentDao extends DAO {
         return student;
     }
 
+    public boolean isStudentNumberExists(String studentNumber) throws Exception {
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        boolean exists = false;
+        try {
+            statement = connection.prepareStatement("SELECT COUNT(*) FROM STUDENT WHERE NO = ?");
+            statement.setString(1, studentNumber);
+            rSet = statement.executeQuery();
+            if (rSet.next()) {
+                exists = rSet.getInt(1) > 0;
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException sqle) {
+                    throw sqle;
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException sqle) {
+                    throw sqle;
+                }
+            }
+        }
+        return exists;
+    }
+
     private List<Student> postFilter(ResultSet rSet, School school) throws Exception {
         List<Student> list = new ArrayList<>();
         try {
