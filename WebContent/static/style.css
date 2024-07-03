@@ -9,9 +9,12 @@ li {
 }
 
 #base_h1 {
-    text-align: center;
+
+    text-align: left;
     margin: 30px;
-    background-color: #80ff80;
+    margin-top: 0px;
+    padding-top: 40px;
+    background-color: #80ffff;
 }
 
 #score_navi {
@@ -20,7 +23,7 @@ li {
     height: auto;
 }
 
-#base_main {
+.main {
     display: flex;
 }
 .main_content{
@@ -30,5 +33,11 @@ li {
 
 footer {
     clear: both;
+    text-align: center;
+    margin: 30px;
+    background-color: #e8e8e8
+}
+
+#login_content{
     text-align: center;
 }
