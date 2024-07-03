@@ -11,6 +11,6 @@
 <p>登録が完了しました</p>
 <a href="subject_list.jsp">戻る</a>
 
-		<a href="../subject/SubjectList.action">科目一覧</a>
+		<a href="SubjectList.action">科目一覧</a>
 </c:param>
 </c:import>

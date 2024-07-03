@@ -10,7 +10,7 @@ import java.util.List;
 import bean.School;
 import bean.Subject;
 
-public class SubjectDao extends Dao{
+public class SubjectDao extends DAO{
 	private String baseSql = "select * from subject where school_cd=?";
 	public Subject get(String cd,School school) throws Exception{
 		Subject subject = new Subject();
