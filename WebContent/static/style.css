@@ -85,12 +85,6 @@ footer {
     margin-top: 20px;
 }
 
-.menu-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
 /* 各メニュー項目のスタイル */
 .menu-item {
     padding: 20px;
