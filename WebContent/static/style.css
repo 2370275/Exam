@@ -7,32 +7,29 @@ ul {
 
 /* Reset padding for list items */
 li {
-    padding-left: 0;
+    padding-left: 30;
 }
 
 /* Header section styling */
 h1#base_h1 {
     background-color: #f0f8ff;
     padding: 20px;
-    text-align: center;
+    text-align: left;
     font-size: 24px;
     font-weight: bold;
     margin: 0;
     border-bottom: 1px solid #ddd;
 }
-#main{
-    display:flex;
-}
 
-/* Navigation bar styling */
+/* メニュー幅 */
 #score_navi {
-    width: 15%;
-    border-right: solid 1px #000; /* Add right border */
-    height: auto;
+    width: 35%;
+    border-right: solid 1px #ddd; /* Add right border */
+    height: 400;
 }
 
 /* Main content area styling */
-.main {
+#main {
     display: flex; /* Use flexbox for layout */
 }
 
@@ -46,7 +43,7 @@ h1#base_h1 {
 footer {
     clear: both;
     text-align: center; /* Center align text */
-    margin: 30px;
+    margin: 150px;
     background-color: #e8e8e8; /* Set light grey background color */
 }
 
