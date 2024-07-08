@@ -1,43 +1,116 @@
 @charset 'UTF-8';
 
+/* Remove default list styles */
 ul {
     list-style: none;
 }
 
+/* Reset padding for list items */
 li {
     padding-left: 0;
 }
 
+/* Header section styling */
 #base_h1 {
-
-    text-align: left;
+    text-align: left; /* Align text to the left */
     margin: 30px;
     margin-top: 0px;
     padding-top: 40px;
-    background-color: #80ffff;
+    background-color: #80ffff; /* Set background color similar to the screenshot */
 }
 
+/* Navigation bar styling */
 #score_navi {
     width: 15%;
-    border-right: solid 1px #000;
+    border-right: solid 1px #000; /* Add right border */
     height: auto;
 }
 
+/* Main content area styling */
 .main {
-    display: flex;
-}
-.main_content{
-	margin-left:50px;
-	margin-right: 0px;
+    display: flex; /* Use flexbox for layout */
 }
 
+/* Adjust main content margins */
+.main_content {
+    margin-left: 50px;
+    margin-right: 0px;
+}
+
+/* Footer styling */
 footer {
     clear: both;
-    text-align: center;
+    text-align: center; /* Center align text */
     margin: 30px;
-    background-color: #e8e8e8
+    background-color: #e8e8e8; /* Set light grey background color */
 }
 
-#login_content{
+/* Login content styling */
+#login_content {
+    text-align: center; /* Center align text */
+}
+
+/* Custom styling for specific sections in the screenshot */
+.menu-item {
+    padding: 20px;
+    border-radius: 8px;
     text-align: center;
+    color: #fff;
+    margin: 10px;
+    font-size: 16px;
+}
+
+/* Colors for different sections */
+.student-management {
+    background-color: #ffcccc; /* Light red background */
+}
+
+.score-management {
+    background-color: #ccffcc; /* Light green background */
+}
+
+.subject-management {
+    background-color: #ccccff; /* Light purple background */
+}
+
+/* Specific styles for the highlighted numbers */
+.menu-item .number {
+    font-size: 20px;
+    font-weight: bold;
+    color: red; /* Red color for emphasis */
+}
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* 各メニュー項目のスタイル */
+.menu-item {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fff;
+    margin: 10px;
+    font-size: 16px;
+    width: 30%; /* ボックスの幅を設定 */
+}
+
+/* 色分けされたセクション */
+.student-management {
+    background-color: #ffcccc; /* ライトレッド */
+}
+
+.score-management {
+    background-color: #ccffcc; /* ライトグリーン */
+}
+
+.subject-management {
+    background-color: #ccccff; /* ライトパープル */
 }

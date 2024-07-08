@@ -5,17 +5,23 @@
 
 <c:import url="base.jsp">
     <c:param name="content">
-		<h2 id="menu_h2">メニュー</h2>
-		<div id="student_menu">
-			<a href="StudentList.action">学生管理</a>
-		</div>
-		<div id="test_menu">
-			学生管理<br>
-			<a href="test_regist.jsp">成績登録</a><br>
-			<a href="test_list.jsp">成績参照</a><br>
-		</div>
-		<div id="subject_menu">
-			<a href="SubjectList.action">科目管理</a>
-		</div>
-	</c:param>
+        <!-- メニューのタイトル -->
+        <h2 id="menu_h2">メニュー</h2>
+        <div class="menu-container">
+            <!-- 学生管理のセクション -->
+            <div class="menu-item student-management">
+                <a href="StudentList.action">学生管理</a>
+            </div>
+            <!-- 成績管理のセクション -->
+            <div class="menu-item score-management">
+                <div>成績管理</div>
+                <a href="test_regist.jsp">成績登録</a><br>
+                <a href="test_list.jsp">成績参照</a>
+            </div>
+            <!-- 科目管理のセクション -->
+            <div class="menu-item subject-management">
+                <a href="SubjectList.action">科目管理</a>
+            </div>
+        </div>
+    </c:param>
 </c:import>
