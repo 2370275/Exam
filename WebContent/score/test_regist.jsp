@@ -30,9 +30,9 @@
                         <label class="form-label" for="student-f2-select">クラス</label>
                         <select class="form-select" id="student-f2-select" name="f2">
                             <option value="0">-------</option>
-                            <c:forEach var="num" items="${class_num_set}">
-                                <option value="${num}" <c:if test="${num == f2}">selected</c:if>>${num}</option>
-                            </c:forEach>
+                            <c:forEach var="classNum" items="${class_num_set}">
+                            	<option value="${num}" <c:if test="${num == param.f2}">selected</c:if>>${num}</option>
+                        	</c:forEach>
                         </select>
                     </div>
 
@@ -42,7 +42,7 @@
                         <select class="form-select" id="student-f3-select" name="f3">
                             <option value="0">-------</option>
                             <c:forEach var="subject" items="${subject_cd_set}">
-                                <option value="${subject}" <c:if test="${subject == f3}">selected</c:if>>${subject}</option>
+                                <option value="${subject.cd}" <c:if test="${subject.cd == f3}">selected</c:if>>${subject.cd}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -52,7 +52,7 @@
                         <label class="form-label" for="student-f4-select">回数</label>
                         <select class="form-select" id="student-f4-select" name="f4">
                             <option value="0">-------</option>
-                            <c:forEach var="num" items="${subject_num_set}">
+                            <c:forEach var="num" items="${test_num_set}">
                                 <option value="${num}" <c:if test="${num == f4}">selected</c:if>>${num}</option>
                             </c:forEach>
                         </select>
@@ -84,8 +84,8 @@
                                 <c:forEach var="student" items="${students}">
                                     <tr>
                                         <td>${student.entYear}</td>
-                                        <td>${student.classNum}</td>
-                                        <td>${student.no}</td>
+                                        <td>${test.classNum}</td>
+                                        <td>${test.no}</td>
                                         <td>${student.name}</td>
                                         <td>
                                             <input type="number" class="form-control" name="point_${student.no}" value="${student.point}" min="0" max="100" required>
