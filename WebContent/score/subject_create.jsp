@@ -1,8 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="base.jsp" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+<c:import url="base.jsp">
+    <c:param name="content">
 <h2 class="mt-4">科目新規登録</h2>
 <form action="SubjectCreateExecute.action" method="post">
     <div class="form-group">
@@ -18,4 +19,7 @@
 </form>
 <c:if test="${not empty error}">
     <div class="alert alert-danger mt-3">${error}</div>
+
 </c:if>
+</c:param>
+</c:import>
