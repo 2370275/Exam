@@ -11,12 +11,17 @@ li {
 }
 
 /* Header section styling */
-#base_h1 {
-    text-align: left; /* Align text to the left */
-    margin: 30px;
-    margin-top: 0px;
-    padding-top: 40px;
-    background-color: #80ffff; /* Set background color similar to the screenshot */
+h1#base_h1 {
+    background-color: #f0f8ff;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+#main{
+    display:flex;
 }
 
 /* Navigation bar styling */
@@ -48,29 +53,6 @@ footer {
 /* Login content styling */
 #login_content {
     text-align: center; /* Center align text */
-}
-
-/* Custom styling for specific sections in the screenshot */
-.menu-item {
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    color: #fff;
-    margin: 10px;
-    font-size: 16px;
-}
-
-/* Colors for different sections */
-.student-management {
-    background-color: #ffcccc; /* Light red background */
-}
-
-.score-management {
-    background-color: #ccffcc; /* Light green background */
-}
-
-.subject-management {
-    background-color: #ccccff; /* Light purple background */
 }
 
 /* Specific styles for the highlighted numbers */

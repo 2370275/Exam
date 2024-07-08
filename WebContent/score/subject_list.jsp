@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="base.jsp" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+<c:import url="base.jsp">
+    <c:param name="content">
 <h2 class="mt-4">科目管理</h2>
 <a href="SubjectCreate.action" class="btn btn-primary mb-3">新規登録</a>
 
@@ -27,3 +27,5 @@
         </c:forEach>
     </tbody>
 </table>
+</c:param>
+</c:import>
