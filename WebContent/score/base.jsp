@@ -11,15 +11,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            background-color: #f8f9fa;
+            padding: 15px;
+            background-color: #f0f8ff;
+            text-align: left;
+            font-weight: bold;
+            width: 66%; /* 画面の3分の2の幅に設定 */
+            margin: 0 auto; /* 上下の余白を0にし、左右の余白を自動に設定して中央揃え */
+            border-bottom: 1px solid #ddd;
         }
         header h1 {
             margin: 0;
         }
         header .user-info {
             display: flex;
-            align-items: center;
+            font-size: 15px;
         }
         header .user-info span {
             margin-right: 10px;
@@ -50,8 +55,8 @@
                         <li><a href="StudentList.action">学生管理</a></li>
                         <li>成績管理
                             <ul>
-                                <li><a href="test_regist.jsp">成績登録</a></li>
-                                <li><a href="test_list.jsp">成績参照</a></li>
+                                <li><a href="Test_Regist.action">成績登録</a></li>
+                                <li><a href="Test_List.action">成績参照</a></li>
                             </ul>
                         </li>
                         <li><a href="SubjectList.action">科目管理</a></li>

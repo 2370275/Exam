@@ -1,79 +1,61 @@
 @charset 'UTF-8';
 
-/* Remove default list styles */
 ul {
     list-style: none;
 }
 
-/* Reset padding for list items */
 li {
-    padding-left: 30;
+    padding-left: 0;
 }
 
-/* Header section styling */
-h1#base_h1 {
-    background-color: #f0f8ff;
-    padding: 20px;
-    text-align: left;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-    border-bottom: 1px solid #ddd;
-}
 
-/* メニュー幅 */
+/*メニュー一覧*/
 #score_navi {
     width: 35%;
-    border-right: solid 1px #ddd; /* Add right border */
+    border-right: solid 2px #ddd;
     height: 400;
 }
 
-/* Main content area styling */
 #main {
-    display: flex; /* Use flexbox for layout */
+    display: flex;
 }
 
-/* Adjust main content margins */
-.main_content {
-    margin-left: 50px;
-    margin-right: 0px;
-}
-
-/* Footer styling */
+/* 大原学園 */
 footer {
     clear: both;
-    text-align: center; /* Center align text */
-    margin: 150px;
-    background-color: #e8e8e8; /* Set light grey background color */
+    text-align: center;
+    margin: auto;
+    background-color: #e8e8e8;
+    width: 66%
 }
 
-/* Login content styling */
+/* ログイン */
 #login_content {
-    text-align: center; /* Center align text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px; /* 適宜調整 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
 }
 
-/* Specific styles for the highlighted numbers */
+#menu_h2 {
+    background-color: #d3d3d3; /* 薄いグレー */
+    padding: 5px; /* 適宜調整 */
+    margin: 10px;
+}
+
 .menu-item .number {
     font-size: 20px;
     font-weight: bold;
-    color: red; /* Red color for emphasis */
 }
 .menu-container {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-}
-
-/* 各メニュー項目のスタイル */
-.menu-item {
-    padding: 50px;
-    border-radius: 8px;
-    color: #fff;
-    margin: 60px;
-    font-size: 20px;
-    width: 30px ;
-    height: 30px ;
-    width: 30%; /* ボックスの幅を設定 */
 }
 
 /* 色分けされたセクション */
