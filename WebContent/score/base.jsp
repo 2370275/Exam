@@ -4,9 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
-    <meta charset="UTF-8">
-    <title>得点管理システム</title>
-    <style>
+<meta charset="UTF-8">
+<title>得点管理システム</title>
+<style>
         header {
             display: flex;
             justify-content: space-between;
@@ -29,7 +29,7 @@
         header .user-info span {
             margin-right: 10px;
         }
-    </style>
+</style>
 </head>
 <body>
     <header>
@@ -66,10 +66,10 @@
         </c:choose>
         <div id="base_main">
             ${param.content}
-        </div>
-    </div>
-    <footer>
-        <small>&copy; 2023 TIC</small><br>
-        <small>大原学園</small>
-    </footer>
+</div>
+</div>
+<footer>
+<small>&copy; 2023 TIC</small><br>
+<small>大原学園</small>
+</footer>
 </body>

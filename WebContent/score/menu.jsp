@@ -15,8 +15,8 @@
             <!-- 成績管理のセクション -->
             <div class="menu-item score-management">
                 <div>成績管理</div>
-                <a href="test_regist.jsp">成績登録</a><br>
-                <a href="test_list.jsp">成績参照</a>
+                <a href="TestRegist.action">成績登録</a><br>
+                <a href="TestList.action">成績参照</a>
             </div>
             <!-- 科目管理のセクション -->
             <div class="menu-item subject-management">
