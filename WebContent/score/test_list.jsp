@@ -75,7 +75,8 @@
         </div>
     </div>
 </form>
-<div class="text-info">学生情報を選択または学生情報を入力して検索ボタンをクリックしてください</div>
+<div class="text-info" style="font-size: x-small;">科目情報を選択または学生情報を入力して検索ボタンをクリックしてください</div>
+
 
         </section>
     </c:param>
