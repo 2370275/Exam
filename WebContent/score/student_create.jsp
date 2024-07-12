@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="base.jsp" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+<c:import url="/score/base.jsp">
 <h2 class="mt-4">学生新規登録</h2>
 <form action="StudentCreateExecute.action" method="post">
     <div class="form-group">
@@ -46,3 +46,4 @@
     <div class="alert alert-danger mt-3">${sessionScope.error}</div>
     <c:remove var="error" scope="session"/>
 </c:if>
+</c:import>
