@@ -45,7 +45,7 @@
                 <label class="form-label" for="student-f3-select">科目</label>
                 <select class="form-select" id="student-f3-select" name="f3">
                     <option value="0">-------</option>
-                    <c:forEach var="subject" items="${subject_cd_set}">
+                    <c:forEach var="subject" items="${subjects}">
                         <option value="${subject}" <c:if test="${subject == f3}">selected</c:if>>${subject}</option>
                     </c:forEach>
                 </select>
@@ -79,7 +79,7 @@
             <!-- 成績一覧(科目)テーブル -->
             <c:choose>
                 <c:when test="${not empty students}">
-                    <div class="my-2">科目: ${subject_name}</div>
+                    <div class="my-2">科目: ${subjects}</div>
                     <table class="table table-hover">
                         <thead>
                             <tr>
