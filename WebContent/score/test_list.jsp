@@ -54,12 +54,14 @@
             <!-- 検索ボタン -->
             <div class="col-2 text-center">
                 <button class="btn btn-secondary" id="filter-button">検索</button>
-                
+
             </div>
         </div>
-
+	</div>
+</form>
+<form method="get" action="TestListStudentExecute.action">
+	<div class="border mx-3 mb-3 py-2 rounded">
         <!-- Separator Line -->
-        <hr class="my-4">
 
         <!-- 学生情報 -->
         <div class="row align-items-center mb-3">

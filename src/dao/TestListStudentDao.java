@@ -11,10 +11,10 @@ import bean.Student;
 import bean.TestListStudent;
 
 public class TestListStudentDao extends DAO {
-    private String baseSql = "SELECT s.subject_name, ts.subject, ts.num, ts.point " +
-                             "FROM test_scores ts " +
-                             "JOIN subjects s ON ts.subject = s.subject_code " +
-                             "WHERE ts.student_id = ?";
+    private String baseSql = "SELECT subject_cd, no, point, class_num " +
+    							"FROM test " +
+    							"JOIN subject ON test.subject_cd = subject.cd " +
+    							"WHERE student_no = ?";
 
     private List<TestListStudent> postFilter(ResultSet rSet) throws Exception {
         // Initialize list
@@ -25,7 +25,7 @@ public class TestListStudentDao extends DAO {
                 // Initialize TestListStudent instance
                 TestListStudent testListStudent = new TestListStudent();
                 // Set values from the result set
-                testListStudent.setSubjectName(rSet.getString("subject_name"));
+                testListStudent.setSubjectName(rSet.getString("name"));
                 testListStudent.setSubject(rSet.getString("subject"));
                 testListStudent.setNum(rSet.getInt("num"));
                 testListStudent.setPoint(rSet.getInt("point"));
