@@ -1,75 +1,47 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<link rel="stylesheet" href="../static/style.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%-- 共通テンプレート --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>得点管理システム</title>
-<style>
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background-color: #f0f8ff;
-            text-align: left;
-            font-weight: bold;
-            width: 66%; /* 画面の3分の2の幅に設定 */
-            margin: 0 auto; /* 上下の余白を0にし、左右の余白を自動に設定して中央揃え */
-            border-bottom: 1px solid #ddd;
-        }
-        header h1 {
-            margin: 0;
-        }
-        header .user-info {
-            display: flex;
-            font-size: 15px;
-        }
-        header .user-info span {
-            margin-right: 10px;
-        }
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+<title>${param.title}</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+${param.scripts}
 </head>
 <body>
-    <header>
-        <h1>得点管理システム</h1>
-        <div class="user-info">
-            <c:if test="${not empty sessionScope.teacher}">
-                <span>${sessionScope.teacher.name} 様</span> <!-- Teacher オブジェクトの name プロパティを表示 -->
-                <a href="Logout.action">ログアウト</a>
-            </c:if>
-        </div>
-    </header>
-    <div id="main">
-        <c:choose>
-            <c:when test="${empty sessionScope.isLoggedIn}">
-                <!-- ログインしていない場合の処理 -->
-                <p>ログインしていません。</p>
-            </c:when>
-            <c:otherwise>
-                <!-- ログインしている場合の処理 -->
-                <nav id="score_navi">
-                    <ul>
-                        <li><a href="Menu.action">メニュー</a></li>
-                        <li><a href="StudentList.action">学生管理</a></li>
-                        <li>成績管理
-                            <ul>
-                                <li><a href="TestRegist.action">成績登録</a></li>
-                                <li><a href="TestList.action">成績参照</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="SubjectList.action">科目管理</a></li>
-                    </ul>
-                </nav>
-            </c:otherwise>
-        </c:choose>
-        <div id="base_main">
-            ${param.content}
-</div>
-</div>
-<footer>
-<small>&copy; 2023 TIC</small><br>
-<small>大原学園</small>
-</footer>
+	<div id="wrapper" class="container">
+		<header
+			class="d-flex flex-wrap justify-content-center py-3 px-5 mb-4 border-bottom border-2 bg-primary bg-opacity-10 bg-gradient">
+			<c:import url="/common/header.jsp" />
+		</header>
+
+		<div class="row justify-content-center">
+			<c:choose>
+				<%-- ログイン済みの場合 --%>
+				<c:when test="${!empty sessionScope.isLoggedIn}">
+					<nav class="col-3" style="height:40rem;">
+						<c:import url="/common/sidebar.jsp" />
+					</nav>
+					<main class="col-9 border-start"> ${param.content} </main>
+				</c:when>
+				<%-- 未ログインの場合 --%>
+				<c:otherwise>
+					<main class="col-8"> ${param.content} </main>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		<footer class="py-2 my-4 bg-dark bg-opacity-10 border-top border-3 align-bottom">
+			<c:import url="/common/footer.jsp" />
+		</footer>
+	</div>
 </body>
+</html>
