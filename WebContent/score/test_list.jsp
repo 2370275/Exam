@@ -45,7 +45,7 @@
                 <label class="form-label" for="student-f3-select">科目</label>
                 <select class="form-select" id="student-f3-select" name="f3">
                     <option value="0">-------</option>
-                    <c:forEach var="subject" items="${subject_cd_set}">
+                    <c:forEach var="subject" items="${subjects}">
                         <option value="${subject}" <c:if test="${subject == f3}">selected</c:if>>${subject}</option>
                     </c:forEach>
                 </select>
@@ -54,11 +54,14 @@
             <!-- 検索ボタン -->
             <div class="col-2 text-center">
                 <button class="btn btn-secondary" id="filter-button">検索</button>
+
             </div>
         </div>
-
+	</div>
+</form>
+<form method="get" action="TestListStudentExecute.action">
+	<div class="border mx-3 mb-3 py-2 rounded">
         <!-- Separator Line -->
-        <hr class="my-4">
 
         <!-- 学生情報 -->
         <div class="row align-items-center mb-3">

@@ -32,8 +32,8 @@ public class TestListAction extends Action {
         }
 
 //        if (teacher == null || !user.isAuthenticated()) {
- //           response.sendRedirect("login.jsp");
- //           return;
+//           response.sendRedirect("login.jsp");
+//           return;
   //      }
 
         School school = teacher.getSchool();
@@ -65,6 +65,7 @@ public class TestListAction extends Action {
             // Set attributes for JSP rendering
             request.setAttribute("subjects", subjects);
             request.setAttribute("classNumbers", classNumbers);
+            request.setAttribute("ent_year_set", entYearSet);
 
             // Forward to the JSP page
             request.getRequestDispatcher("test_list.jsp").forward(request, response);

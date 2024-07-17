@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.*" %>
 
-<c:import url="/common/base.jsp">
+<c:import url="base.jsp">
     <c:param name="title" value="得点管理システム" />
     <c:param name="content">
         <section class="me-4">
