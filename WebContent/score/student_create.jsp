@@ -1,67 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<script>
-    function redirectToPage() {
-        var form = document.getElementById('student_create');
-        form.submit();
-    }
-</script>
-
-<fmt:setBundle basename="messages" var="msg"/>
-<c:set var="title" value="学生情報登録" />
-<c:set var="content">
-    <section class="me-4">
-        <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">学生情報登録</h2>
-
-        <form id="student_create" action="/Score/StudentCreateExecute" method="post">
-            <div class="row mb-3">
-                <div class="col-12">
-                    <label class="form-label" for="student-ent-year-select">入学年度</label>
-                    <select class="form-select" id="student-ent-year-select" name="ent_year">
-                        <option value="0">-------</option>
-                        <c:forEach var="year" items="${ent_year_set}">
-                            <option value="${year}">${year}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <label class="form-label" for="student-number-input">学生番号</label>
-                    <input type="text" class="form-control" id="student-number-input" name="student-number" maxlength="10" required placeholder="学生番号を入力してください">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <label class="form-label" for="student-name-input">氏名</label>
-                    <input type="text" class="form-control" id="student-name-input" name="student-name" maxlength="30" required placeholder="氏名を入力してください">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-12">
-                    <label class="form-label" for="class-num-select">クラス</label>
-                    <select class="form-select" id="class-num-select" name="class_num">
-                        <option value="0">-------</option>
-                        <c:forEach var="classItem" items="${class_num_set}">
-                            <option value="${classItem}">${classItem}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-            </div>
-
-            <div id="insert_button">
+<c:import url="base.jsp">
+<c:param name="content">
+<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">学生情報登録</h2>
+<form action="StudentCreateExecute.action" method="post">
+<div class="form-group">
+<label for="student_entYear">入学年度</label>
+<select class="form-select" id="student_entYear" name="ent_year">
+<option value="0">----------</option>
+<c:forEach var="entYear" items="${ent_year_set}">
+<option value="${entYear}">${entYear}</option>
+</c:forEach>
+</select>
+<c:if test="${not empty sessionScope.errorEntYear}">
+<div class="text-danger">${sessionScope.errorEntYear}</div>
+<c:remove var="errorEntYear" scope="session"/>
+</c:if>
+</div>
+<div class="form-group">
+<label for="student_no">学生番号</label>
+<input type="text" class="form-control" id="student_no" name="student_number" placeholder="学生番号を入力してください" required>
+<c:if test="${not empty sessionScope.errorStudentNumber}">
+<div class="text-danger">${sessionScope.errorStudentNumber}</div>
+<c:remove var="errorStudentNumber" scope="session"/>
+</c:if>
+</div>
+<div class="form-group">
+<label for="student_name">氏名</label>
+<input type="text" class="form-control" id="student_name" name="student_name" placeholder="氏名を入力してください" required>
+</div>
+<div class="form-group">
+<label for="student_classNum">クラス</label>
+<select class="form-select" id="student_classNum" name="class_num">
+<c:forEach var="classNum" items="${class_num_set}">
+<option value="${classNum}">${classNum}</option>
+</c:forEach>
+</select>
+</div>
+    <div id="insert_button">
                 <input type="submit" value="登録して終了">
             </div>
-        </form>
-
-        <div class="my-2 text-start px-2">
-            <a href="student_list.jsp">戻る</a>
+<br><br>
+   <div class="text-start ">
+            <a href="StudentList.action">戻る</a>
         </div>
-    </section>
-</c:set>
-<c:import url="base.jsp">
-    <c:param name="title" value="${title}" />
-    <c:param name="content" value="${content}" />
+
+</form>
+<c:if test="${not empty sessionScope.error}">
+<div class="alert alert-danger mt-3">${sessionScope.error}</div>
+<c:remove var="error" scope="session"/>
+</c:if>
+</c:param>
 </c:import>
