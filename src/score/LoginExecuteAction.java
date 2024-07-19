@@ -20,8 +20,10 @@ public class LoginExecuteAction extends Action{
 		if(teacher!=null){
 			session.setAttribute("isLoggedIn", true);
 			session.setAttribute("teacher", teacher);
+			session.removeAttribute("errorMessage"); // ログイン成功時にエラーメッセージをクリア
 			response.sendRedirect("menu.jsp");
 		}else{
+			session.setAttribute("errorMessage", "ログインに失敗しました。IDまたはパスワードが正しくありません。");
 			response.sendRedirect("login.jsp");
 		}
 	}

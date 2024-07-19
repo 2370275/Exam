@@ -11,7 +11,7 @@
             text-align: center;
             font-weight: bold;
             font-size: 24px; /* Adjust font size as needed */
-            margin-bottom: 20px; /* Optional: Adds space below the title */
+            margin-bottom: 1px; /* Optional: Adds space below the title */
         }
         .card {
             max-width: 500px; /* Adjust the maximum width to make it larger */
@@ -47,15 +47,19 @@
                     <div class='login-title'>ログイン</div>
                 </div>
                 <div class='card-body'>
+              <c:if test='${not empty sessionScope.errorMessage}'>
+                        <div class='error-message'>${sessionScope.errorMessage}</div>
+                        <c:remove var='errorMessage' scope='session'/>
+                    </c:if>
                     <form action='LoginExecute.action' method='post'>
                         <div class='mb-3'>
-                            <label for='id' class='form-label'>ID</label>
-                            <input type='text' class='form-control' id='id' name='id' value='${param.id}' maxlength='20' pattern='[A-Za-z0-9]*' placeholder='半角でご入力ください' required>
+                            <label for='id' class='form-label'></label>
+                            <input type='text' class='form-control' id='id' name='id' value='${param.id}' maxlength='20' pattern='[A-Za-z0-9]*' placeholder='ID' required>
 
                         </div>
                         <!-- Hidden input for password -->
-                       <label for='password' class='form-label'>パスワード</label>
-　　　　　　　　　　　 <input type='password' class='form-control' id='password' name='password' maxlength='20' pattern='[A-Za-z0-9]*' placeholder='20文字以内の半角英数字でご入力ください' required>
+                       <label for='password' class='form-label'></label>
+　　　　　　　　　　　 <input type='password' class='form-control' id='password' name='password' maxlength='20' pattern='[A-Za-z0-9]*' placeholder='パスワード' required>
 
                         <!-- Visible input for text -->
                         <input type='text' class='form-control' id='textPassword' name='textPassword' style='display: none;'>
