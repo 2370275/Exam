@@ -1,26 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- 学生更新完了JSP --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:import url="/score/base.jsp">
+    <c:param name="title">
+        得点管理システム
+    </c:param>
+    <c:param name="scripts"></c:param>
+    <c:param name="content">
+        <section class="me-4">
+            <h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">ログアウト</h2>
+        </section>
+<div class="me-4" style="display: block; text-align: center; background-color: green;">
+    <p class="h3 mb-1 fw-normal text-white py-1 px-4" style="margin: 0; font-size: 0.8em;">ログアウトしました</p>
+</div>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>ログアウト</title>
-    <link rel="stylesheet" type="text/css" href="path/to/your/styles.css">
-</head>
-<body>
-    <jsp:include page="base.jsp">
-        <jsp:param name="title" value="ログアウト"/>
-        <jsp:param name="scripts" value=""/>
-        <jsp:param name="content" value="
-            <div class='card'>
-                <div class='card-header'>ログアウト</div>
-                <div class='card-body'>
-                    <p>ログアウトしました。</p>
-                    <a href='login.jsp' class='btn btn-primary'>ログイン</a>
-                </div>
-            </div>
-        "/>
-    </jsp:include>
-</body>
-</html>
+ <div style="margin-top: 7em;"></div>
+<a href="Login.action" style="margin-right: 60px;">ログイン</a>
+</c:param>
+</c:import>
