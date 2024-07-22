@@ -11,11 +11,11 @@
                 <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">学生情報変更</h2>
                 <div class="form-group mb-3">
                     <label for="student_entYear" class="form-label">入学年度</label>
-                    <input type="number" class="form-control" id="student_entYear" name="ent_year" value="${student.entYear}" readonly>
+                    <input style=border:none type="number" class="form-control" id="student_entYear" name="ent_year" value="${student.entYear}" readonly>
                 </div>
                 <div class="form-group mb-3">
                     <label for="student_no" class="form-label">学生番号</label>
-                    <input type="text" class="form-control" id="student_no" name="student_number" value="${student.no}" readonly>
+                    <input style=border:none type="text" class="form-control" id="student_no" name="student_number" value="${student.no}" readonly>
                 </div>
                 <div class="form-group mb-3">
                     <label for="student_name" class="form-label">氏名</label>
