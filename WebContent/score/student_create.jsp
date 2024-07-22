@@ -33,7 +33,9 @@
 </div>
 <div class="form-group">
 <label for="student_classNum">クラス</label>
+
 <select class="form-select" id="student_classNum" name="class_num">
+<option value="0">----------</option>
 <c:forEach var="classNum" items="${class_num_set}">
 <option value="${classNum}">${classNum}</option>
 </c:forEach>

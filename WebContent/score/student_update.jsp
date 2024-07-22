@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="student_name" class="form-label">氏名</label>
-                    <input type="text" class="form-control" id="student_name" name="name" value="${student.name}" placeholder="氏名を入力してください" required>
+                    <input type="text" class="form-control" id="student_name" name="name" value="${student.name}" placeholder="氏名を入力してください" maxlength="30"　required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="student_classNum" class="form-label">クラス</label>
