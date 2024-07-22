@@ -3,9 +3,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <c:import url="base.jsp">
     <c:param name="content">
-<h2 class="mt-4">科目管理</h2>
-<a href="SubjectCreate.action" class="btn btn-primary mb-3">新規登録</a>
-
+<h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目管理</h2>
+<div class="my-2 text-end px-4">
+<a href="SubjectCreate.action">新規登録</a>
+</div>
 <table class="table table-bordered">
     <thead>
         <tr>
