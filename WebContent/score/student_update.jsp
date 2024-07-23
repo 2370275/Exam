@@ -11,15 +11,15 @@
                 <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">学生情報変更</h2>
                 <div class="form-group mb-3">
                     <label for="student_entYear" class="form-label">入学年度</label>
-                    <input style=border:none type="number" class="form-control" id="student_entYear" name="ent_year" value="${student.entYear}" readonly>
+                    <input style="border:none" type="number" class="form-control" id="student_entYear" name="ent_year" value="${student.entYear}" readonly>
                 </div>
                 <div class="form-group mb-3">
                     <label for="student_no" class="form-label">学生番号</label>
-                    <input style=border:none type="text" class="form-control" id="student_no" name="student_number" value="${student.no}" readonly>
+                    <input style="border:none" type="text" class="form-control" id="student_no" name="student_number" value="${student.no}" readonly>
                 </div>
                 <div class="form-group mb-3">
                     <label for="student_name" class="form-label">氏名</label>
-                    <input type="text" class="form-control" id="student_name" name="name" value="${student.name}" placeholder="氏名を入力してください" maxlength="30"　required>
+                    <input type="text" class="form-control" id="student_name" name="name" value="${student.name}" placeholder="氏名を入力してください" maxlength="30" pattern="[\u3040-\u30FF\u4E00-\u9FFF]*" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="student_classNum" class="form-label">クラス</label>
@@ -40,3 +40,14 @@
         </form>
     </c:param>
 </c:import>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const nameInput = document.getElementById('student_name');
+
+        nameInput.addEventListener('input', function(event) {
+            const regex = /[^\u3040-\u30FF\u4E00-\u9FFF]/g;
+            nameInput.value = nameInput.value.replace(regex, '');
+        });
+    });
+</script>
