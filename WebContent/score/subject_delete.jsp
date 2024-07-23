@@ -13,10 +13,10 @@
     <p>「${subject.name}(${subject.cd})」を削除してもよろしいですか</p>
     <form action="SubjectDeleteExecute.action" method="post">
         <input type="hidden" name="cd" value="${subject.cd}">
-        <button type="submit">削除</button>
+        <button type="submit" class="btn btn-danger">削除</button>
     </form>
 </c:if>
-
+ <div style="margin-top: 4em;"></div>
 <a href="SubjectList.action">戻る</a>
 </c:param>
 </c:import>

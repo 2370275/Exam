@@ -14,12 +14,16 @@
         <label for="subject_name">科目名</label>
         <input type="text" class="form-control" id="subject_name" name="subject_name" placeholder="科目名を入力してください" required>
     </div>
-    <button type="submit" class="btn btn-primary">登録</button>
-    <a href="SubjectList.action" class="btn btn-secondary">戻る</a>
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">登録</button>
+    </div>
+    <div class="form-group mt-2">
+        <a href="SubjectList.action" >戻る</a>
+    </div>
 </form>
+
 <c:if test="${not empty error}">
     <div class="alert alert-danger mt-3">${error}</div>
-
 </c:if>
 </c:param>
 </c:import>

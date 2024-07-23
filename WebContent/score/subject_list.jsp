@@ -1,28 +1,51 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    /* Remove the top border of the table headers */
+    .table thead th {
+        border-top: none;
+    }
+    /* Align subject name to the left */
+    .subject-name {
+        text-align: left;
+        padding-left: 200px; /* Adjust as needed to align further left */
+        margin-right: 50px;
+    }
+    /* Flex container for link alignment */
+    .link-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    /* Adjust spacing between links */
+    a.change {
+        margin-right: 0px; /* Adjust this value for desired spacing */
+    }
+    a.delete {
+        margin-right: 50px; /* Adjust this value to match spacing of 'change' */
+    }
+</style>
 <c:import url="base.jsp">
     <c:param name="content">
 <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目管理</h2>
 <div class="my-2 text-end px-4">
-<a href="SubjectCreate.action">新規登録</a>
+    <a href="SubjectCreate.action">新規登録</a>
 </div>
-<table class="table table-bordered">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>科目コード</th>
-            <th>科目名</th>
-            <th>操作</th>
+            <th class="subject-name">科目名</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <c:forEach var="subject" items="${subjects}">
             <tr>
                 <td>${subject.cd}</td>
-                <td>${subject.name}</td>
-                <td>
-                    <a href="SubjectUpdate.action?cd=${subject.cd}" class="btn btn-warning">変更</a>
-                    <a href="SubjectDelete.action?cd=${subject.cd}" class="btn btn-danger">削除</a>
+                <td class="subject-name">${subject.name}</td>
+                <td class="link-container">
+                    <a class="change" href="SubjectUpdate.action?cd=${subject.cd}">変更</a>
+                    <a class="delete" href="SubjectDelete.action?cd=${subject.cd}">削除</a>
                 </td>
             </tr>
         </c:forEach>

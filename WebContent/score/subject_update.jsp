@@ -4,15 +4,17 @@
 
 <c:import url="base.jsp">
     <c:param name="content">
-<h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目情報更新</h2>
+<h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目情報変更</h2>
 <c:choose>
     <c:when test="${not empty subject}">
         <form action="SubjectUpdateExecute.action" method="post">
             <input type="hidden" name="cd" value="${subject.cd}">
-            <div class="form-group">
-                <label for="subject_cd">科目コード</label>
-                <input type="text" class="form-control" id="subject_cd" name="cd" value="${subject.cd}" readonly>
+            <div class="form-group ">
+                <label for="subject_cd" >科目コード</label>
+                <input style="border:none"  class="form-control" id="subject_cd" name="cd" value="${subject.cd}" readonly>
             </div>
+
+
             <div class="form-group">
                 <label for="subject_name">科目名</label>
                 <input type="text" class="form-control" id="subject_name" name="name" value="${subject.name}" placeholder="科目名を入力してください" required>
