@@ -45,7 +45,7 @@ public class TestListSubjectExecuteAction extends Action {
         String subjectCd = request.getParameter("f3");
 
         if ("0".equals(entYearStr) || "0".equals(classNum) || "0".equals(subjectCd)) {
-            request.setAttribute("error_message", "全てのフィールドを入力してください。");
+            request.setAttribute("error_message", "入学年度とクラスと科目を選択してください");
             request.getRequestDispatcher("TestList.action").forward(request, response);
             return;
         }
