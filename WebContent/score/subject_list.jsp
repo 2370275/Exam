@@ -8,20 +8,17 @@
     /* Align subject name to the left */
     .subject-name {
         text-align: left;
-        padding-left: 200px; /* Adjust as needed to align further left */
-        margin-right: 50px;
+        padding-left: 20px; /* Adjust as needed */
     }
     /* Flex container for link alignment */
     .link-container {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
+        gap: 80px; /* Adjust spacing between the links for greater separation */
     }
-    /* Adjust spacing between links */
-    a.change {
-        margin-right: 0px; /* Adjust this value for desired spacing */
-    }
-    a.delete {
-        margin-right: 50px; /* Adjust this value to match spacing of 'change' */
+    /* Offset the '削除' link slightly from the right edge */
+    .link-container a.delete {
+        margin-right: 20px; /* Adjust this value for desired right offset */
     }
 </style>
 <c:import url="base.jsp">
@@ -43,9 +40,11 @@
             <tr>
                 <td>${subject.cd}</td>
                 <td class="subject-name">${subject.name}</td>
-                <td class="link-container">
-                    <a class="change" href="SubjectUpdate.action?cd=${subject.cd}">変更</a>
-                    <a class="delete" href="SubjectDelete.action?cd=${subject.cd}">削除</a>
+                <td>
+                    <div class="link-container">
+                        <a class="change" href="SubjectUpdate.action?cd=${subject.cd}">変更</a>
+                        <a class="delete" href="SubjectDelete.action?cd=${subject.cd}">削除</a>
+                    </div>
                 </td>
             </tr>
         </c:forEach>
