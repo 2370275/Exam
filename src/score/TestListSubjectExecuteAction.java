@@ -1,5 +1,7 @@
 package score;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,7 @@ import bean.School;
 import bean.Subject;
 import bean.Teacher;
 import bean.TestListSubject;
+import dao.ClassNumDao;
 import dao.SchoolDao;
 import dao.SubjectDao;
 import dao.TestListSubjectDao;
@@ -61,6 +64,23 @@ public class TestListSubjectExecuteAction extends Action {
             if (subject == null) {
                 throw new Exception("Subject not found for code: " + subjectCd);
             }
+
+          //セレクトボックスの中身
+            ClassNumDao classNumDao = new ClassNumDao();
+
+            LocalDate todayDate = LocalDate.now();
+            int year = todayDate.getYear();
+            List<Integer> entYearSet = new ArrayList<>();
+            for (int i = year - 10; i <= year; i++) {
+                entYearSet.add(i);
+            }
+
+            List<Subject> subjects = subjectDao.filter(school);
+            List<String> classNumbers = classNumDao.filter(school);
+
+            request.setAttribute("subjects", subjects);
+            request.setAttribute("classNumbers", classNumbers);
+            request.setAttribute("ent_year_set", entYearSet);
 
             // Fetch test list subjects
             List<TestListSubject> testListSubjects = testListSubjectDao.filter(entYear, classNum, subject, school);
