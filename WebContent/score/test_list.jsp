@@ -56,8 +56,14 @@
                             <button class="btn btn-secondary" id="filter-button">検索</button>
                         </div>
                     </div>
+                    <c:if test="${not empty error_message}">
+		                <div style="color: #FBBC05;">
+        		            ${error_message}
+                		</div>
+		            </c:if>
                 </div>
             </form>
+
 
             <form method="get" action="TestListStudentExecute.action">
                 <div class="border mx-3 mb-3 py-2 rounded">
