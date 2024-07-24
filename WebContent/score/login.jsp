@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ログイン</title>
+    <title>得点管理システム</title>
     <link rel="stylesheet" type="text/css" href="path/to/your/styles.css">
     <style>
         .login-title {
