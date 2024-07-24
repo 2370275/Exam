@@ -264,6 +264,4 @@ public class SubjectDao extends DAO {
         return list;
     }
 
-
-    // 他のメソッド
 }

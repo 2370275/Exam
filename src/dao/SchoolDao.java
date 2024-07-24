@@ -16,7 +16,7 @@ public class SchoolDao extends DAO {
 	 * @return 学校クラスのインスタンス 存在しない場合はnull
 	 * @throws Exception
 	 */
-	public School get(String cd) throws Exception {
+	public School get(String no) throws Exception {
 		// 学校インスタンスを初期化
 		School school = new School();
 		// データベースへのコネクションを確率
@@ -28,7 +28,7 @@ public class SchoolDao extends DAO {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("select * from school where cd=?");
 			// プリペアードステートメントに学校コードをバインド
-			statement.setString(1, cd);
+			statement.setString(1, no);
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import bean.Student;
 import bean.Teacher;
 import bean.TestListStudent;
+import dao.StudentDao;
 import dao.TestListStudentDao;
 import tool.Action;
 
@@ -17,12 +18,7 @@ public class TestListStudentExecuteAction extends Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
-//        User user = (User) session.getAttribute("user");
 
-//        if (user == null || !user.isAuthenticated()) {
- //           response.sendRedirect("login.jsp");
-  //          return;
- //       }
         Teacher teacher = (Teacher) session.getAttribute("teacher");
 
         if (teacher == null) {
@@ -36,16 +32,22 @@ public class TestListStudentExecuteAction extends Action {
         // Retrieve parameter from request
         String studentNumber = request.getParameter("f4");
 
-        // Fetch student details
-        Student student = new Student();
-        student.setNo(studentNumber); // Assuming 'no' is the student number
+        System.out.println("number: " + studentNumber);
 
-        // Fetch and set data for the view
+        if (studentNumber == null) {
+            throw new Exception("Student not found");
+        }
+
+        // Fetch student details using StudentDao
+        StudentDao studentDao = new StudentDao();
         TestListStudentDao testListStudentDao = new TestListStudentDao();
+
+        Student student = studentDao.get(studentNumber);
+
         List<TestListStudent> testListStudents = testListStudentDao.filter(student);
 
-        request.setAttribute("students", testListStudents);
-        request.setAttribute("student_name", ""); // Set student name from fetched data if needed
+        request.setAttribute("testListStudents", testListStudents);
+        request.setAttribute("student_name", student.getName()); // Set student name from fetched data
         request.setAttribute("student_number", studentNumber); // Pass student number for display
 
         // Forward to the JSP

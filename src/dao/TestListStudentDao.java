@@ -11,32 +11,36 @@ import bean.Student;
 import bean.TestListStudent;
 
 public class TestListStudentDao extends DAO {
-    private String baseSql = "SELECT subject_cd, no, point, class_num " +
-    							"FROM test " +
-    							"JOIN subject ON test.subject_cd = subject.cd " +
-    							"WHERE student_no = ?";
+    private String baseSql = "SELECT subject.name, test.subject_cd, test.no, test.point " +
+                         	"FROM test " +
+                         	"JOIN subject ON test.subject_cd = subject.cd " +
+                         	"WHERE student_no = ?";
 
     private List<TestListStudent> postFilter(ResultSet rSet) throws Exception {
-        // Initialize list
         List<TestListStudent> list = new ArrayList<>();
+
         try {
-            // Iterate over the result set
             while (rSet.next()) {
                 // Initialize TestListStudent instance
                 TestListStudent testListStudent = new TestListStudent();
+
                 // Set values from the result set
                 testListStudent.setSubjectName(rSet.getString("name"));
-                testListStudent.setSubject(rSet.getString("subject"));
-                testListStudent.setNum(rSet.getInt("num"));
+                testListStudent.setSubject(rSet.getString("subject_cd"));
+                testListStudent.setNum(rSet.getInt("no"));
                 testListStudent.setPoint(rSet.getInt("point"));
+
                 // Add to list
                 list.add(testListStudent);
             }
-        } catch (SQLException | NullPointerException e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();  // Handle SQL exceptions
+            throw e;  // Re-throw the exception after logging
         }
+
         return list;
     }
+
 
     public List<TestListStudent> filter(Student student) {
         List<TestListStudent> testListStudents = new ArrayList<>();

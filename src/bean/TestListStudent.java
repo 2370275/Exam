@@ -11,14 +11,19 @@ public class TestListStudent implements Serializable {
 	public String getSubjectName() {
 		return subjectName ;
 	}
+
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
-	}	public String getSubject() {
+	}
+
+	public String getSubject() {
 		return subject;
 	}
+
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
+
 	public int getNum() {
 	    return num;
 	}

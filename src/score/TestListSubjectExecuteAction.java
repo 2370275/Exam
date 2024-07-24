@@ -37,27 +37,40 @@ public class TestListSubjectExecuteAction extends Action {
         }
 
         // Retrieve request parameters
-        int entYear = Integer.parseInt(request.getParameter("entYear"));
-        String classNum = request.getParameter("classNum");
-        String subjectCd = request.getParameter("subjectCd");
+        String entYearStr = request.getParameter("f1");
+        String classNum = request.getParameter("f2");
+        String subjectCd = request.getParameter("f3");
 
-        // Initialize DAOs
+        if (entYearStr == null || classNum == null || subjectCd == null) {
+            throw new Exception("One or more required parameters are missing");
+        }
+
+
         SchoolDao schoolDao = new SchoolDao();
         SubjectDao subjectDao = new SubjectDao();
         TestListSubjectDao testListSubjectDao = new TestListSubjectDao();
 
         try {
+        	int entYear = Integer.parseInt(entYearStr);
             // Fetch school information
             School school = schoolDao.get(teacher.getSchool().getCd());
 
             // Fetch subject information
             Subject subject = subjectDao.get(subjectCd, school);
 
+            if (subject == null) {
+                throw new Exception("Subject not found for code: " + subjectCd);
+            }
+
             // Fetch test list subjects
             List<TestListSubject> testListSubjects = testListSubjectDao.filter(entYear, classNum, subject, school);
 
             // Set request attribute
             request.setAttribute("testListSubjects", testListSubjects);
+
+
+            request.setAttribute("subject_cd", subject.getCd()); // Set student name from fetched data
+            request.setAttribute("subject_name", subject.getName());
 
             // Forward to JSP page
             request.getRequestDispatcher("test_list_subject.jsp").forward(request, response);

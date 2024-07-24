@@ -10,7 +10,7 @@ public class TestListSubject implements Serializable {
 	private String studentNo;
 	private String studentName;
 	private String classNum;
-	private HashMap<Integer,Integer> points = new HashMap<Integer,Integer>();
+	private Map<Integer, Integer> points = new HashMap<>();
 
 	public int getEntYear() {
 	    return entYear;
@@ -39,7 +39,7 @@ public class TestListSubject implements Serializable {
 	public Map<Integer,Integer> getPoints(){
 		return points;
 	}
-	public void  setPoints(HashMap<Integer,Integer> points) {
+	public void  setPoints(Map<Integer,Integer> points) {
 		this.points = points;
 	}
 	public String getPoint(int key) {
