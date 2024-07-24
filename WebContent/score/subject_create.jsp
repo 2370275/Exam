@@ -8,14 +8,14 @@
         <form action="SubjectCreateExecute.action" method="post">
             <div class="form-group">
                 <label for="subject_cd">科目コード</label>
-                <input type="text" class="form-control" id="subject_cd" name="subject_cd" placeholder="科目コードを入力してください" value="${param.subject_cd}" required>
+                <input type="text" class="form-control" id="subject_cd" name="subject_cd" placeholder="科目コードを入力してください。" value="${param.subject_cd}" required>
                 <c:if test="${not empty errorSubjectCd}">
                     <div class="text-warning mt-1">${errorSubjectCd}</div>
                 </c:if>
             </div>
             <div class="form-group">
                 <label for="subject_name">科目名</label>
-                <input type="text" class="form-control" id="subject_name" name="subject_name" placeholder="科目名を入力してください" value="${param.subject_name}" required>
+                <input type="text" class="form-control" id="subject_name" name="subject_name" placeholder="科目名を入力してください。" value="${param.subject_name}" required>
                 <c:if test="${not empty errorSubjectName}">
                     <div class="text-warning mt-1">${errorSubjectName}</div>
                 </c:if>
