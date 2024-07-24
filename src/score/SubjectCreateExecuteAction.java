@@ -17,9 +17,25 @@ public class SubjectCreateExecuteAction extends Action {
             String subjectCd = req.getParameter("subject_cd");
             String subjectName = req.getParameter("subject_name");
 
+            boolean hasError = false;
+
+            // 科目コードがnull、空、または3文字でない場合のチェック
             if (subjectCd == null || subjectCd.isEmpty() || subjectCd.length() != 3) {
-                req.setAttribute("error", "科目コードは3文字で入力してください");
-                req.getRequestDispatcher("SubjectCreate.action").forward(req, res);
+                req.setAttribute("errorSubjectCd", "科目コードは3文字で入力してください");
+                hasError = true;
+            }
+
+            SubjectDao subjectDao = new SubjectDao();
+            // 科目コードがすでに存在するかどうかのチェック
+            if (!hasError && subjectDao.isSubjectCdExists(subjectCd)) {
+                req.setAttribute("errorSubjectCd", "科目コードが重複しています");
+                hasError = true;
+            }
+
+            if (hasError) {
+                req.setAttribute("subject_cd", subjectCd);
+                req.setAttribute("subject_name", subjectName);
+                req.getRequestDispatcher("subject_create.jsp").forward(req, res);
                 return;
             }
 
@@ -27,17 +43,10 @@ public class SubjectCreateExecuteAction extends Action {
             Teacher teacher = (Teacher) session.getAttribute("teacher");
 
             if (teacher == null) {
-                throw new Exception("Teacher not found in session");
+                throw new Exception("セッションに教師が見つかりません");
             }
 
             School school = teacher.getSchool();
-
-            SubjectDao subjectDao = new SubjectDao();
-            if (subjectDao.isSubjectCdExists(subjectCd)) {
-                req.setAttribute("error", "科目コードが重複しています");
-                req.getRequestDispatcher("SubjectCreate.action").forward(req, res);
-                return;
-            }
 
             Subject subject = new Subject();
             subject.setCd(subjectCd);
@@ -49,8 +58,8 @@ public class SubjectCreateExecuteAction extends Action {
             req.getRequestDispatcher("/score/subject_create_done.jsp").forward(req, res);
         } catch (Exception e) {
             e.printStackTrace();
-            req.setAttribute("error", "An error occurred while creating the subject: " + e.getMessage());
-            req.getRequestDispatcher("SubjectCreate.action").forward(req, res);
+            req.setAttribute("error", "科目の作成中にエラーが発生しました: " + e.getMessage());
+            req.getRequestDispatcher("subject_create.jsp").forward(req, res);
         }
     }
 }
