@@ -3,6 +3,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <c:import url="base.jsp">
+
+  <c:param name="title">
+          得点管理システム
+      </c:param>
     <c:param name="content">
         <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目情報登録</h2>
         <form action="SubjectCreateExecute.action" method="post">
@@ -21,7 +25,8 @@
                 </c:if>
             </div>
             <button type="submit" class="btn btn-primary">登録</button>
-            <a href="SubjectList.action" class="btn btn-secondary">戻る</a>
+            <br><br>
+            <a href="SubjectList.action">戻る</a>
         </form>
         <c:if test="${not empty error}">
             <div class="alert alert-danger mt-3">${error}</div>
