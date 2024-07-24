@@ -8,7 +8,7 @@
 <c:if test="${not empty error}">
     <p style="color: red;">${error}</p>
 </c:if>
-
+ <div style="margin-top: 2em;"></div>
 <c:if test="${not empty subject}">
     <p>「${subject.name}(${subject.cd})」を削除してもよろしいですか</p>
     <form action="SubjectDeleteExecute.action" method="post">
