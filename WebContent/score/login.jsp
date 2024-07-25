@@ -1,5 +1,5 @@
-<%@page contentType="text/html; charset=UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -87,7 +87,7 @@
                     <form action='LoginExecute.action' method='post'>
                         <div class='input-container'>
                             <label for='id' class='input-label'>ID</label>
-                            <input type='text' class='form-control' id='id' name='id' value='${param.id}' maxlength='20' pattern='[A-Za-z0-9]*' placeholder='半角でご入力ください' required>
+                            <input type='text' class='form-control' id='id' name='id' value='${sessionScope.enteredId != null ? sessionScope.enteredId : ''}' maxlength='20' pattern='[A-Za-z0-9]*' placeholder='半角でご入力ください' required>
                         </div>
                         <div class='input-container'>
                             <label for='password' class='input-label'>パスワード</label>

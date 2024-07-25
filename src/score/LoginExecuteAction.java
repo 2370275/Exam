@@ -22,13 +22,16 @@ public class LoginExecuteAction extends Action {
                 session.setAttribute("isLoggedIn", true);
                 session.setAttribute("teacher", teacher);
                 session.removeAttribute("errorMessage"); // ログイン成功時にエラーメッセージをクリア
+                session.removeAttribute("enteredId"); // ログイン成功時に入力したIDをクリア
                 response.sendRedirect("menu.jsp");
             } else {
                 session.setAttribute("errorMessage", "ログインに失敗しました。IDまたはパスワードが正しくありません。");
+                session.setAttribute("enteredId", id); // 入力したIDをセッションに保存
                 response.sendRedirect("login.jsp");
             }
         } catch (Exception e) {
             session.setAttribute("errorMessage", "エラーが発生しました。");
+            session.setAttribute("enteredId", id); // エラー発生時にも入力したIDをセッションに保存
             response.sendRedirect("login.jsp");
         }
     }
