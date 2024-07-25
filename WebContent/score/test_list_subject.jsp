@@ -95,8 +95,8 @@
                                 <th>クラス</th>
                                 <th>学生番号</th>
                                 <th>氏名</th>
-                                <th>1回目</th>
-                                <th>2回目</th>
+                                <th>1回</th>
+                                <th>2回</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -132,9 +132,7 @@
                     </table>
                 </c:when>
                 <c:otherwise>
-                    <div class="alert alert-warning" role="alert">
-                        該当する成績はありません。
-                    </div>
+                    <div class="text-black">学生情報が存在しませんでした</div>
                 </c:otherwise>
             </c:choose>
         </section>
