@@ -95,8 +95,8 @@
                                 <th>クラス</th>
                                 <th>学生番号</th>
                                 <th>氏名</th>
-                                <th>1回目</th>
-                                <th>2回目</th>
+                                <th>1回</th>
+                                <th>2回</th>
                             </tr>
                         </thead>
                         <tbody>
