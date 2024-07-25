@@ -29,13 +29,13 @@ public class SubjectUpdateAction extends Action {
             Subject subject = subjectDao.get(cd, school);
 
             if (subject == null) {
-                req.setAttribute("error", "科目が存在していません");
-                req.getRequestDispatcher("/score/subject_update.jsp").forward(req, res);
-                return;
+                req.setAttribute("errorSubjectNotFound", "科目が存在していません");
             } else {
                 req.setAttribute("subject", subject);
+                req.setAttribute("param.name", subject.getName());
             }
 
+            req.setAttribute("param.cd", cd);
             req.getRequestDispatcher("/score/subject_update.jsp").forward(req, res);
         } catch (Exception e) {
             e.printStackTrace();

@@ -30,7 +30,9 @@ public class SubjectUpdateExecuteAction extends Action {
             Subject subject = subjectDao.get(cd, school);
 
             if (subject == null) {
-                req.setAttribute("error", "科目が存在していません");
+                req.setAttribute("errorSubjectNotFound", "科目が存在していません");
+                req.setAttribute("param.cd", cd);
+                req.setAttribute("param.name", name);
                 req.getRequestDispatcher("/score/subject_update.jsp").forward(req, res);
                 return;
             }
@@ -42,11 +44,15 @@ public class SubjectUpdateExecuteAction extends Action {
                 req.getRequestDispatcher("/score/subject_update_done.jsp").forward(req, res);
             } else {
                 req.setAttribute("error", "科目の更新に失敗しました");
+                req.setAttribute("param.cd", cd);
+                req.setAttribute("param.name", name);
                 req.getRequestDispatcher("/score/subject_update.jsp").forward(req, res);
             }
         } catch (Exception e) {
             e.printStackTrace();
             req.setAttribute("error", "エラーが発生しました: " + e.getMessage());
+            req.setAttribute("param.cd", req.getParameter("cd"));
+            req.setAttribute("param.name", req.getParameter("name"));
             req.getRequestDispatcher("/score/subject_update.jsp").forward(req, res);
         }
     }
