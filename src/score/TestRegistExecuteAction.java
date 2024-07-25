@@ -1,75 +1,71 @@
 package score;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import bean.Subject;
 import bean.Teacher;
-import dao.DAO;
+import bean.Test;
+import dao.TestDao;
 import tool.Action;
 
 public class TestRegistExecuteAction extends Action {
 
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        HttpSession session = req.getSession();
-        Teacher teacher = (Teacher) session.getAttribute("teacher");
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setCharacterEncoding("UTF-8");
 
-        if (teacher == null) {
-            throw new Exception("User not found in session");
+        // リクエストパラメータを取得
+        String f1 = request.getParameter("f1");
+        String f2 = request.getParameter("f2");
+        String f3 = request.getParameter("f3");
+        String f4 = request.getParameter("f4");
+
+        // デバッグメッセージの追加
+        System.out.println("Parameters - f1: " + f1 + ", f2: " + f2 + ", f3: " + f3 + ", f4: " + f4);
+
+        if (f1 == null || f2 == null || f3 == null || f4 == null ||
+            f1.equals("0") || f2.equals("0") || f3.equals("0") || f4.equals("0")) {
+            request.setAttribute("message", "すべてのフィールドを入力してください");
+            request.getRequestDispatcher("test_regist.jsp").forward(request, response);
+            return;
         }
 
-        String entYearStr = req.getParameter("entYear");
-        String classNum = req.getParameter("classNum");
-        String subjectCd = req.getParameter("subjectCd");
-        String studentNo = req.getParameter("studentNo");
-        String pointStr = req.getParameter("point");
+        int entYear = Integer.parseInt(f1);
+        String classNum = f2;
+        String subjectCd = f3;
+        int num = Integer.parseInt(f4);
 
-        if (entYearStr == null || classNum == null || subjectCd == null || studentNo == null || pointStr == null) {
-            throw new Exception("All fields are required");
+        Teacher teacher = Util.getUser(request);
+        TestDao testDao = new TestDao();
+        Subject selectedSubject = null;
+
+        // subjects 属性を設定
+        Util.setSubjects(request);
+        List<Subject> subjects = (List<Subject>) request.getAttribute("subjects");
+
+        // 科目名を取得
+        for (Subject subject : subjects) {
+            if (subject.getCd().equals(subjectCd)) {
+                selectedSubject = subject;
+                break;
+            }
         }
 
-        int entYear = Integer.parseInt(entYearStr);
-        int point = Integer.parseInt(pointStr);
+        List<Test> students = testDao.filter(entYear, classNum, selectedSubject, num, teacher.getSchool());
 
-        // Insert into database
-        String sql = "INSERT INTO test_scores (ent_year, class_num, subject_cd, student_no, point) VALUES (?, ?, ?, ?, ?)";
+        request.setAttribute("students", students);
+        request.setAttribute("selectedSubject", selectedSubject);
+        request.setAttribute("selectedNum", num);
+        request.setAttribute("selectedClass", classNum);
+        request.setAttribute("selectedYear", entYear);
 
-        try (Connection conn = new DAO().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, entYear);
-            stmt.setString(2, classNum);
-            stmt.setString(3, subjectCd);
-            stmt.setString(4, studentNo);
-            stmt.setInt(5, point);
-            stmt.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Database operation failed");
-        }
+        Util.setClassNumSet(request);
+        Util.setEntYearSet(request);
+        Util.setNumSet(request);
 
-        // Set message attribute for success notification
-        req.setAttribute("message", "Test score registered successfully");
-
-        // Fetch enrollment year set for dropdown population
-        LocalDate todaysDate = LocalDate.now();
-        int year = todaysDate.getYear();
-
-        List<Integer> entYearSet = new ArrayList<>();
-        for (int i = year - 10; i <= year; i++) {
-            entYearSet.add(i);
-        }
-
-        // Set enrollment year set as request attribute
-        req.setAttribute("entYearSet", entYearSet);
-
-        // Forward to the completion page
-        req.getRequestDispatcher("test_regist_done.jsp").forward(req, res);
+        request.getRequestDispatcher("test_regist.jsp").forward(request, response);
     }
 }
