@@ -44,8 +44,10 @@ public class TestListSubjectExecuteAction extends Action {
         String classNum = request.getParameter("f2");
         String subjectCd = request.getParameter("f3");
 
-        if (entYearStr == null || classNum == null || subjectCd == null) {
-            throw new Exception("One or more required parameters are missing");
+        if ("0".equals(entYearStr) || "0".equals(classNum) || "0".equals(subjectCd)) {
+            request.setAttribute("error_message", "入学年度とクラスと科目を選択してください");
+            request.getRequestDispatcher("TestList.action").forward(request, response);
+            return;
         }
 
 

@@ -6,6 +6,7 @@
 <c:import url="base.jsp">
     <c:param name="title" value="得点管理システム" />
     <c:param name="content">
+    <div id = 'aa'>
         <section class="me-4">
             <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">成績参照</h2>
 
@@ -41,7 +42,7 @@
                         </div>
 
                         <!-- 科目選択 -->
-                        <div class="col-2">
+                        <div class="col-3">
                             <label class="form-label" for="student-f3-select">科目</label>
                             <select class="form-select" id="student-f3-select" name="f3">
                                 <option value="0">-------</option>
@@ -56,8 +57,14 @@
                             <button class="btn btn-secondary" id="filter-button">検索</button>
                         </div>
                     </div>
+                    <c:if test="${not empty error_message}">
+		                <div style="color: #FBBC05;">
+        		            ${error_message}
+                		</div>
+		            </c:if>
                 </div>
             </form>
+
 
             <form method="get" action="TestListStudentExecute.action">
                 <div class="border mx-3 mb-3 py-2 rounded">
@@ -83,5 +90,6 @@
                 科目情報を選択または学生情報を入力して検索ボタンをクリックしてください
             </div>
         </section>
+    </div>
     </c:param>
 </c:import>

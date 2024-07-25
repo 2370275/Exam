@@ -35,6 +35,12 @@ public class StudentListAction extends Action {
         String classNum = req.getParameter("f2");
         String isAttendStr = req.getParameter("f3");
 
+        if ("0".equals(entYearStr) && !"0".equals(classNum)) {
+            session.setAttribute("error_message", "クラスを指定する場合は入学年度も指定してください");
+            res.sendRedirect("StudentList.action");
+            return;
+        }
+
         int entYear = (entYearStr != null && !entYearStr.isEmpty()) ? Integer.parseInt(entYearStr) : 0;
         boolean isAttend = isAttendStr != null;
 
