@@ -132,9 +132,7 @@
                     </table>
                 </c:when>
                 <c:otherwise>
-                    <div class="alert alert-warning" role="alert">
-                        該当する成績はありません。
-                    </div>
+                    <div class="text-black">学生情報が存在しませんでした</div>
                 </c:otherwise>
             </c:choose>
         </section>
