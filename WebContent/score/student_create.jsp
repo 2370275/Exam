@@ -25,7 +25,7 @@
 
       <div class="form-group">
         <label for="student_no">学生番号</label>
-        <input type="text" class="form-control" id="student_no" name="student_number" placeholder="学生番号を入力してください" required>
+        <input type="text" class="form-control" id="student_no" name="no" maxlength='10' placeholder="学生番号を入力してください" value="${no}" required>
         <c:if test="${not empty sessionScope.errorStudentNumber}">
           <div class="text-danger">${sessionScope.errorStudentNumber}</div>
           <c:remove var="errorStudentNumber" scope="session"/>
@@ -34,7 +34,7 @@
 
       <div class="form-group">
         <label for="student_name">氏名</label>
-        <input type="text" class="form-control" id="student_name" name="student_name" placeholder="氏名を入力してください" required>
+        <input type="text" class="form-control" id="student_name" maxlength='30' name="name" placeholder="氏名を入力してください" value="${name}" required>
       </div>
 
       <div class="form-group">

@@ -23,8 +23,8 @@ public class StudentCreateExecuteAction extends Action {
             }
 
             Integer entYear = Integer.parseInt(entYearStr);
-            String studentNumber = req.getParameter("student_number");
-            String studentName = req.getParameter("student_name");
+            String studentNumber = req.getParameter("no");
+            String studentName = req.getParameter("name");
             String classNum = req.getParameter("class_num");
             boolean isAttend = req.getParameter("is_attend") != null;
 
