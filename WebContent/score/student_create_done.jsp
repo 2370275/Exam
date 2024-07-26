@@ -17,7 +17,7 @@
 </div>
 
  <div style="margin-top: 7em;"></div>
-<a href="student_create.jsp" style="margin-right: 60px;">戻る</a>
+<a href="StudentCreate.action" style="margin-right: 60px;">戻る</a>
 <a href="StudentList.action">学生一覧</a>
 
 </c:param>

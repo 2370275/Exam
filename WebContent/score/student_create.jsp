@@ -45,6 +45,10 @@
             <option value="${classNum}" <c:if test="${classNum == sessionScope.class_num}">selected</c:if>>${classNum}</option>
           </c:forEach>
         </select>
+        <c:if test="${not empty sessionScope.errorClassNum}">
+          <div class="text-danger">${sessionScope.errorClassNum}</div>
+          <c:remove var="errorClassNum" scope="session"/>
+        </c:if>
       </div>
 
       <div id="insert_button">

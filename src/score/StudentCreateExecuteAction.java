@@ -24,8 +24,19 @@ public class StudentCreateExecuteAction extends Action {
             session.setAttribute("name", studentName);
             session.setAttribute("class_num", classNum);
 
+            boolean hasError = false;
+
             if (entYearStr == null || entYearStr.equals("0") || entYearStr.equals("----------")) {
                 session.setAttribute("errorEntYear", "入学年度を選択してください");
+                hasError = true;
+            }
+
+            if (classNum == null || classNum.equals("0") || classNum.equals("----------")) {
+                session.setAttribute("errorClassNum", "クラスを選択してください");
+                hasError = true;
+            }
+
+            if (hasError) {
                 res.sendRedirect("StudentCreate.action");
                 return;
             }
@@ -65,6 +76,7 @@ public class StudentCreateExecuteAction extends Action {
             session.removeAttribute("class_num");
             session.removeAttribute("errorEntYear");
             session.removeAttribute("errorStudentNumber");
+            session.removeAttribute("errorClassNum");
             session.removeAttribute("error");
 
             res.sendRedirect("StudentCreateDone.action");
