@@ -96,12 +96,12 @@
                         </div>
                         <div class='d-flex justify-content-center'>
                             <div class='mb-3 form-check'>
-                                <input type='checkbox' class='form-check-input' id='rememberMe' name='rememberMe' onchange='togglePasswordVisibility()'>
+                                <input type='checkbox' class='form-check-input' id='rememberMe' maxlength='20' name='chk_d_ps' onchange='togglePasswordVisibility()'>
                                 <label class='form-check-label' for='rememberMe'>パスワードを表示</label>
                             </div>
                         </div>
                         <div class='text-center'>
-                            <button type='submit' class='btn btn-primary'>ログイン</button>
+                            <button type='submit' class='btn btn-primary' name='login'>ログイン</button>
                         </div>
                     </form>
                 </div>
