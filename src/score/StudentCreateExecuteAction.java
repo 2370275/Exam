@@ -1,5 +1,7 @@
 package score;
 
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -33,6 +35,13 @@ public class StudentCreateExecuteAction extends Action {
 
             if (classNum == null || classNum.equals("0") || classNum.equals("----------")) {
                 session.setAttribute("errorClassNum", "クラスを選択してください");
+                hasError = true;
+            }
+
+            // 日本語のみを受け付ける正規表現
+            Pattern namePattern = Pattern.compile("^[\\p{InHiragana}\\p{InKatakana}\\p{InCJKUnifiedIdeographs}\\p{InCJKCompatibilityIdeographs}\\p{InHalfwidthandFullwidthForms}]+$");
+            if (!namePattern.matcher(studentName).matches()) {
+                session.setAttribute("errorName", "名前には日本語のみを入力してください");
                 hasError = true;
             }
 
@@ -77,6 +86,7 @@ public class StudentCreateExecuteAction extends Action {
             session.removeAttribute("errorEntYear");
             session.removeAttribute("errorStudentNumber");
             session.removeAttribute("errorClassNum");
+            session.removeAttribute("errorName");
             session.removeAttribute("error");
 
             res.sendRedirect("StudentCreateDone.action");

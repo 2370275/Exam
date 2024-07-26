@@ -34,7 +34,11 @@
 
       <div class="form-group">
         <label for="student_name">氏名</label>
-        <input type="text" class="form-control" id="student_name" maxlength='30' name="name" placeholder="氏名を入力してください" value="${sessionScope.name}" required>
+        <input type="text" class="form-control" id="student_name" maxlength='30' name="name" placeholder="氏名を入力してください" value="${sessionScope.name}" required pattern="[\u3040-\u30FF\u4E00-\u9FFF]*">
+        <c:if test="${not empty sessionScope.errorName}">
+          <div class="text-danger">${sessionScope.errorName}</div>
+          <c:remove var="errorName" scope="session"/>
+        </c:if>
       </div>
 
       <div class="form-group">
