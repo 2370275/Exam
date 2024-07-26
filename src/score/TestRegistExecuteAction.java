@@ -28,7 +28,11 @@ public class TestRegistExecuteAction extends Action {
 
         if (f1 == null || f2 == null || f3 == null || f4 == null ||
             f1.equals("0") || f2.equals("0") || f3.equals("0") || f4.equals("0")) {
-            request.setAttribute("message", "すべてのフィールドを入力してください");
+            request.setAttribute("message", "入学年度とクラスと科目と回数を選択してください");
+            Util.setClassNumSet(request);
+            Util.setEntYearSet(request);
+            Util.setNumSet(request);
+            Util.setSubjects(request);
             request.getRequestDispatcher("test_regist.jsp").forward(request, response);
             return;
         }

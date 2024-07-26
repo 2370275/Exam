@@ -60,6 +60,14 @@
     <c:param name="content">
         <section class="me-4">
             <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
+
+            <!-- エラーメッセージ表示部分の追加 -->
+            <c:if test="${not empty message}">
+                <div class="alert alert-danger" role="alert">
+                    ${message}
+                </div>
+            </c:if>
+
         </section>
         <form method="post" action="TestRegistExecute.action">
             <div class="custom-box">
