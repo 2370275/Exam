@@ -14,7 +14,7 @@
         <select class="form-select" id="student_entYear" name="ent_year">
           <option value="0">----------</option>
           <c:forEach var="entYear" items="${ent_year_set}">
-            <option value="${entYear}">${entYear}</option>
+            <option value="${entYear}" <c:if test="${entYear == sessionScope.ent_year}">selected</c:if>>${entYear}</option>
           </c:forEach>
         </select>
         <c:if test="${not empty sessionScope.errorEntYear}">
@@ -25,7 +25,7 @@
 
       <div class="form-group">
         <label for="student_no">学生番号</label>
-        <input type="text" class="form-control" id="student_no" name="no" maxlength='10' placeholder="学生番号を入力してください" value="${no}" required>
+        <input type="text" class="form-control" id="student_no" name="no" maxlength='10' placeholder="学生番号を入力してください" value="${sessionScope.no}" required>
         <c:if test="${not empty sessionScope.errorStudentNumber}">
           <div class="text-danger">${sessionScope.errorStudentNumber}</div>
           <c:remove var="errorStudentNumber" scope="session"/>
@@ -34,7 +34,7 @@
 
       <div class="form-group">
         <label for="student_name">氏名</label>
-        <input type="text" class="form-control" id="student_name" maxlength='30' name="name" placeholder="氏名を入力してください" value="${name}" required>
+        <input type="text" class="form-control" id="student_name" maxlength='30' name="name" placeholder="氏名を入力してください" value="${sessionScope.name}" required>
       </div>
 
       <div class="form-group">
@@ -42,7 +42,7 @@
         <select class="form-select" id="student_classNum" name="class_num">
           <option value="0">----------</option>
           <c:forEach var="classNum" items="${class_num_set}">
-            <option value="${classNum}">${classNum}</option>
+            <option value="${classNum}" <c:if test="${classNum == sessionScope.class_num}">selected</c:if>>${classNum}</option>
           </c:forEach>
         </select>
       </div>

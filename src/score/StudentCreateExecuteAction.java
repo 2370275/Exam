@@ -14,7 +14,15 @@ public class StudentCreateExecuteAction extends Action {
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
         try {
             String entYearStr = req.getParameter("ent_year");
+            String studentNumber = req.getParameter("no");
+            String studentName = req.getParameter("name");
+            String classNum = req.getParameter("class_num");
+
             HttpSession session = req.getSession();
+            session.setAttribute("ent_year", entYearStr);
+            session.setAttribute("no", studentNumber);
+            session.setAttribute("name", studentName);
+            session.setAttribute("class_num", classNum);
 
             if (entYearStr == null || entYearStr.equals("0") || entYearStr.equals("----------")) {
                 session.setAttribute("errorEntYear", "入学年度を選択してください");
@@ -23,9 +31,6 @@ public class StudentCreateExecuteAction extends Action {
             }
 
             Integer entYear = Integer.parseInt(entYearStr);
-            String studentNumber = req.getParameter("no");
-            String studentName = req.getParameter("name");
-            String classNum = req.getParameter("class_num");
             boolean isAttend = req.getParameter("is_attend") != null;
 
             Teacher teacher = (Teacher) session.getAttribute("teacher");
@@ -53,14 +58,25 @@ public class StudentCreateExecuteAction extends Action {
 
             studentDao.save(student);
 
+            // セッション変数のクリア
+            session.removeAttribute("ent_year");
+            session.removeAttribute("no");
+            session.removeAttribute("name");
+            session.removeAttribute("class_num");
+            session.removeAttribute("errorEntYear");
+            session.removeAttribute("errorStudentNumber");
+            session.removeAttribute("error");
+
             res.sendRedirect("StudentCreateDone.action");
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            req.setAttribute("error", "Invalid input: " + e.getMessage());
+            HttpSession session = req.getSession();
+            session.setAttribute("error", "Invalid input: " + e.getMessage());
             res.sendRedirect("StudentCreate.action");
         } catch (Exception e) {
             e.printStackTrace();
-            req.setAttribute("error", "An error occurred while creating the student: " + e.getMessage());
+            HttpSession session = req.getSession();
+            session.setAttribute("error", "An error occurred while creating the student: " + e.getMessage());
             res.sendRedirect("StudentCreate.action");
         }
     }
